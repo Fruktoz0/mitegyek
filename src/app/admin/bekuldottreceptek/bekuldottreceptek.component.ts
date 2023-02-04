@@ -25,7 +25,11 @@ export class BekuldottreceptekComponent implements OnInit {
 
   ngOnInit() {
     this.service.getRecept().subscribe((res: Recept[]) => {
-      this.receptek = res;
+      this.receptek = res.filter((recept: Recept) =>{
+        console.log(recept);
+        return (recept.elfogadottRecept === false)
+        
+      })
     })
   }
 
@@ -50,6 +54,12 @@ export class BekuldottreceptekComponent implements OnInit {
       this.service.deleteRecept(recept).then(() => 
        console.log('delete successful'));
     }
+  }
+
+  elfogadRecept(recept: Recept){
+    this.service.elfogadRecept(recept).then(() => 
+    console.log('Recept Átküldve'));
+  
   }
  
 

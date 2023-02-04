@@ -19,12 +19,15 @@ export class ReceptbekuldesComponent {
 
 
   constructor(
-    public service: BaseService, 
-    public router: Router){}
+    public service: BaseService,
+    public router: Router) { }
 
-    onSubmit(form: NgForm) {
-      this.service.createRecept(form.value).
-        then(() => form.reset());
-    }
+  onSubmit(form: NgForm) {
+    this.service.createRecept({ ...form.value, elfogadottRecept: false }).
+      then(() => form.reset());
+  }
 
 }
+
+/*
+*/

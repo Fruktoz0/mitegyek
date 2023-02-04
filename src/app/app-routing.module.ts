@@ -24,6 +24,7 @@ const routes: Routes = [
   {path: 'receptek', component: ReceptekComponent},
   {path: 'registration', component: RegistrationComponent},
   {path: 'mitegyekma', component: MitegyekmaComponent},
+  {path: 'bekuldottrecept/:id', component: BekuldottreceptComponent},
 
   {path: 'admin', component: AdminComponent, children: [
     {path: 'bekuldottrecept/:id', component: BekuldottreceptComponent},

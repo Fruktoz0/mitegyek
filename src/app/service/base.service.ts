@@ -50,6 +50,11 @@ export class BaseService {
     return updateDoc(receptDocRef, { price: amount });
   }
 
+  elfogadRecept(recept: Recept){
+    const receptDocRef = doc(this.firestore, `receptek/${recept.id}`);
+    return setDoc(receptDocRef, {...recept, elfogadottRecept: true});
+  }
+
 
 
 }
