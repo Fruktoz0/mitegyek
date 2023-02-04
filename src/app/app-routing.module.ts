@@ -24,9 +24,13 @@ const routes: Routes = [
   {path: 'receptek', component: ReceptekComponent},
   {path: 'registration', component: RegistrationComponent},
   {path: 'mitegyekma', component: MitegyekmaComponent},
-  {path: 'bekuldottreceptek/:id', component: BekuldottreceptComponent},
-  {path: 'bekuldottrecept', component: BekuldottreceptComponent},
+
+  {path: 'admin', component: AdminComponent, children: [
+    {path: 'bekuldottrecept/:id', component: BekuldottreceptComponent},
+  ]
+},
   {path: 'receptbekuldes', component: ReceptbekuldesComponent},
+
   {path: 'editrecept', component: EditreceptComponent},
   {path: 'login', component: LoginComponent},
   {path: '**', redirectTo: 'mitegyekma', pathMatch: 'full'},

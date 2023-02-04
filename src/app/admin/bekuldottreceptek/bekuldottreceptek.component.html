@@ -1,6 +1,8 @@
 <div class="container">
   <form class="row">
-    <div class="col col-lg-2 col-md-12 col-sm-12" *ngFor="let recept of receptek; index as i">
+    <div 
+    class="col col-lg-2 col-md-12 col-sm-12" 
+    *ngFor="let recept of receptek; index as i">
       <section class="mx-auto my-1" style="max-width: 18rem;">
 
         <div class="card">
@@ -24,8 +26,8 @@
               <div class="row">
                 <div class="col col-lg-12">
                   <a class="btn btn-link link-danger p-md-1 my-1" data-mdb-toggle="collapse"
-                  routerLink="'/bekuldottrecept', x.id" role="button" aria-expanded="false"
-                  aria-controls="collapseContent">Elolvasom</a>
+                  [routerLink]="['../bekuldottrecept', recept.id]" role="button" aria-expanded="false"
+                  aria-controls="collapseContent">Elolvasom </a>
                   <button class="btn btn-success" (click)="editRecept(recept)" ><fa-icon [icon]="pentosquare"></fa-icon></button>
                 <button class="btn btn-danger" (click)="deleteRecept(recept)" ><fa-icon [icon]="fatrash"></fa-icon></button>
                 </div>

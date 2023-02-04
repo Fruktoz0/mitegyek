@@ -5,6 +5,7 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { EditreceptComponent } from 'src/app/editrecept/editrecept.component';
 import { Recept } from 'src/app/receptbekuldes/recept';
 import { BaseService } from 'src/app/service/base.service';
+import { BekuldottreceptComponent } from '../bekuldottrecept/bekuldottrecept.component';
 
 
 @Component({
@@ -15,7 +16,7 @@ import { BaseService } from 'src/app/service/base.service';
 export class BekuldottreceptekComponent implements OnInit {
 
   fatrash = faTrash;
-  pentosquare = faPenToSquare;
+  pentosquare = faPenToSquare
 
   receptek: Recept[] = [];
 
@@ -37,13 +38,20 @@ export class BekuldottreceptekComponent implements OnInit {
     modalRef.componentInstance.id = recept.id;
   }
 
+  showRecept(recept: Recept) {
+    const modalRef = this.modal.open(BekuldottreceptComponent, {
+    backdrop: true
+    });
+    modalRef.componentInstance.id = recept.id;
+  }
+
   deleteRecept(recept: Recept) {
     if (confirm('Valóban Törölni akarod a receptet?') == true) {
       this.service.deleteRecept(recept).then(() => 
        console.log('delete successful'));
     }
   }
-
+ 
 
 }
 

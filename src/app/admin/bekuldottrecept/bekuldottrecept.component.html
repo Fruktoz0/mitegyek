@@ -1,9 +1,14 @@
-<!--<ul class="heroes">
-  <li *ngFor="let recept of this.service.receptek">
+
+
+
+<ul class="heroes" *ngIf="recept">
+  <form #receptForm="ngForm">
+  <li >
     <button type="button">
       <span class="badge">{{recept.id}}</span>
       <span class="name">{{recept.receptNev}}</span>
     </button>
   </li>
+</form>
 </ul>
--->
+
