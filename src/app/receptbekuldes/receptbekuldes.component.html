@@ -1,0 +1,110 @@
+<div class="container text-center mt-1">
+    <form 
+    #receptForm="ngForm" 
+    class="container mt-1 mb-5 d-flex justify-content-center"
+    (ngSubmit)="onSubmit(receptForm)"
+     >
+        <div class="card px-1 py-4">
+            <h5 class="information">Recept beküldése</h5>
+            <div class="frame">
+                <div class="center">
+                    <div class="title">
+                        <h1>Drop file to upload</h1>
+                    </div>
+
+                    <div class="dropzone">
+                        <img src="http://100dayscss.com/codepen/upload.svg" class="upload-icon" />
+                        <input type="file" class="upload-input" />
+                    </div>
+
+                    <button type="button" class="normalButton" name="uploadbutton">Upload file</button>
+
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="form-group">
+                        <input class="form-control" [(ngModel)]="this.recept.receptNev" name="receptNev" type="text" placeholder="Recept neve" required
+                        >
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12">
+                    <span class="mt-2">Alap információk:</span>
+                    <select [(ngModel)]="recept.kategoria" class="form-control form-select" aria-label="Default select example" name="kategoria">
+                        <option selected>Kategória</option>
+                        <option value="egzotikus">Egzotikus</option>
+                        <option value="keleti" 
+                        >Keleti</option>
+                        <option value="amerikai" 
+                        >Amerikai</option>
+                    </select>
+                    <select [(ngModel)]="recept.glutenmentes" name="gluténmentes" class="form-control form-select" aria-label="Default select example">
+                        <option selected>Gluténmentes</option>
+                        <option value="igen">Igen</option>
+                        <option value="nem">Nem</option>
+                        
+                    </select>
+                    <div  class="form-group">
+                        <div class="input-group">
+                             <input [(ngModel)]="recept.nehezseg" class="form-control" type="text" placeholder="Nehézség" name="nehezseg">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="form-group">
+                        <div class="input-group">
+                             <input [(ngModel)]="recept.elokeszulesiIdo" class="form-control" type="text" placeholder="Előkészülési idő" name="elokeszulesIIdo">
+                        </div>
+                        <div class="input-group">
+                             <input [(ngModel)]="recept.elkeszitesiIdo" class="form-control" type="text" placeholder="Elkészítési idő" name="elkeszitesiIdo" >
+                        </div>
+                    </div>
+                </div>
+            </div>
+       
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="form-group">
+                        <span>Sütési információk</span>
+                        <div class="input-group">
+                            <input [(ngModel)]="recept.sutesiIdo" class="form-control" type="text" placeholder="Sütési idő" name="sutesiIdo">
+                        </div>
+                        <div class="input-group">
+                            <input [(ngModel)]="recept.sutesiHofok" class="form-control" type="text" placeholder="Sütési hőfok" name="sutesiHofok">
+                        </div>
+                        <select [(ngModel)]="recept.sutesiMod" class="form-control form-select" aria-label="Default select example" name="sutesimod">
+                            <option selected>Sütési mód</option>
+                            <option value="Alul">Alul</option>
+                            <option value="Felül">Felül</option>
+                            <option >Alul Felül légkeveréses</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="form-group">
+                        <span>Mikori étkezés</span>
+                        <select ngModel class="form-control form-select" aria-label="Default select example" name="napszak">
+                            <option selected>Étkezés kiválasztása</option>
+                            <option >Reggeli</option>
+                            <option >Tízórai</option>
+                            <option >Ebéd</option>
+                            <option >Uzsonna</option>
+                            <option >Vacsora</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class=" d-flex flex-column text-center px-5 mt-3 mb-3"> <small class="agree-text">By Booking this
+                    appointment you agree to the</small> <a href="#" class="terms">Terms & Conditions</a> </div>
+            <button type="submit" class="btn btn-primary btn-block confirm-button"
+             
+            >Confirm</button>
+        </div>
+    </form>
+</div>

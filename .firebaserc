@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "mitegyek-92f11": {
+      "hosting": {
+        "mitegyek": [
+          "mitegyek-92f11"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "mitegyek-92f11"
+  }
+}

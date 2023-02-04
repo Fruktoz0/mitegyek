@@ -1,0 +1,33 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-white bg-body-tertiary">
+    <div class="container-fluid">
+      <a class="navbar-brand ms-3" href="#">Mitegyek.hu</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+        <ul class="navbar-nav mx-auto">
+          <li class="nav-item">
+            <a class="nav-link" routerLink="mitennelma">Home</a>
+          </li>
+          <li class="nav-item ">
+            <a class="nav-link" routerLink="receptek">Receptek</a>
+          </li>
+          <li class="nav-item ">
+            <a class="nav-link" routerLink="receptbekuldes">Recept beküldés</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link disabled" *ngIf="this.authService.isLoggedIn()">Belépve mint, {{this.authService.getEmail()}}</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link icon" routerLink="login"><fa-icon [icon]="faUser" *ngIf="!this.authService.isLoggedIn()"></fa-icon ></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link icon" routerLink="login" ><fa-icon [icon]="farRightfrombacket" *ngIf="this.authService.isLoggedIn()" (click)="this.authService.logout()"></fa-icon></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link " routerLink="admin" *ngIf="this.authService.isLoggedIn()">Admin</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
