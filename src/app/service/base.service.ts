@@ -12,9 +12,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class BaseService {
-  addRecept(value: any) {
-    throw new Error('Method not implemented.');
-  }
+
   private dbPath = '/receptek';
 
   constructor(public firestore: Firestore, public auth: Auth,) { }
