@@ -45,7 +45,7 @@ export class BaseService {
     return setDoc(receptDocRef, recept);
   }
 
-  modifyBookPrice(recept: Recept, amount: number) {
+  modifyReceptPrice(recept: Recept, amount: number) {
     const receptDocRef = doc(this.firestore, `receptek/${recept.id}`);
     return updateDoc(receptDocRef, { price: amount });
   }

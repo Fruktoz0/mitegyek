@@ -30,7 +30,7 @@ export class EditreceptComponent implements OnInit {
   }
 
   setPrice(recept: Recept, price: number) {
-    this.service.modifyBookPrice(recept, price)
+    this.service.modifyReceptPrice(recept, price)
   }
 
 

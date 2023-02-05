@@ -1,0 +1,116 @@
+<div class="container">
+    <section>
+      <h4>Search firbase record</h4>
+      <div class="row grid-title">
+        <div class="col-3 col-md-3">
+          <div class="form-group">
+            <label>Book Name</label>
+            <input
+              class="form-control"
+              name="name"
+              #name="ngModel"
+              [(ngModel)]="searchParams.receptNev"
+              placeholder="Book Name"
+              required
+            />
+
+          </div>
+        </div>
+        <div class="col-3 col-md-3">
+          <div class="form-group">
+            <label>Book Genre</label>
+            <input
+              class="form-control"
+              name="gener"
+             
+              
+              placeholder="Book Genre"
+              required
+            />
+          </div>
+        </div>
+        <div class="col-3 col-md-3">
+          <div class="form-group">
+            <label>Book Author</label>
+            <input
+              class="form-control"
+              name="price"
+              
+              placeholder="Book author"
+              required
+            />
+          </div>
+        </div>
+        <div class="col-3 col-md-3">
+          <button class="btn btn-primary" (click)="searchRecipes()">Search</button>
+        </div>
+      </div>
+    </section>
+    <section *ngIf="receptek">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Name</th>
+            <th scope="col">Author</th>
+            <th scope="col">Genres</th>
+            <th scope="col">Price</th>
+          </tr>
+        </thead>
+        <div *ngIf="!isSearchEmpty; else noSearch">
+          <tbody>
+            <tr *ngFor="let recept of receptek; index as i">
+              <th scope="row">{{ i + 1 }}</th>
+              <td>{{ recept.receptNev }}</td>
+             
+            </tr>
+          </tbody>
+        </div>
+      </table>
+  
+      <ng-template #noSearch> Search result not found ! </ng-template>
+    </section>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--
+<div class="container vh-100 mt-3 mx-auto">
+    <div class="row ">
+        <div class="col col-lg-8">
+            <input type="text" 
+            class="form-control mb-5 mt-3" 
+            placeholder="Keresés" 
+            #receptNev="ngModel"
+                [(ngModel)]="searchParams.receptNev">
+        </div>
+        <div class="col col-lg-4 mb-5 mt-3">
+            <button class="btn btn-success" (click)="searchRecipes()">Keresés</button>
+        </div>
+    </div>
+    <div class="row" *ngIf="!isSearchEmpty;">
+        <table class="table table-striped">
+        <tbody>
+            <tr *ngFor="let recept of receptek; index as i">
+              <th scope="row">{{ i + 1 }}</th>
+              <td>{{ recept.receptNev }}</td>
+              <td>{{ recept.kategoria }}</td>
+       
+            </tr>
+          </tbody>
+      </table>
+      <ng-template #noSearch> Search result not found ! </ng-template>
+    </div>
+</div>
+-->

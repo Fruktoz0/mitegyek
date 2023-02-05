@@ -10,6 +10,7 @@ import { MitegyekmaComponent } from './mitegyekma/mitegyekma.component';
 import { RegistrationComponent } from './registration/registration.component';
 import { UsersComponent } from './admin/users/users.component';
 import { EditreceptComponent } from './editrecept/editrecept.component';
+import { SearchComponent } from './search/search.component';
 
 const routes: Routes = [
   {path: '', redirectTo: 'mitegyekma', pathMatch: 'full'},
@@ -31,6 +32,12 @@ const routes: Routes = [
   ]
 },
   {path: 'receptbekuldes', component: ReceptbekuldesComponent},
+  {path: 'search', component: SearchComponent},
+
+  /*{path: 'receptek', component: ReceptekComponent, children: [
+    {path: 'search', component: SearchComponent}
+  ]
+},*/
 
   {path: 'editrecept', component: EditreceptComponent},
   {path: 'login', component: LoginComponent},

@@ -26,7 +26,7 @@ export class BekuldottreceptekComponent implements OnInit {
   ngOnInit() {
     this.service.getRecept().subscribe((res: Recept[]) => {
       this.receptek = res.filter((recept: Recept) =>{
-        console.log(recept);
+        
         return (recept.elfogadottRecept === false)
         
       })
@@ -42,12 +42,6 @@ export class BekuldottreceptekComponent implements OnInit {
     modalRef.componentInstance.id = recept.id;
   }
 
-  showRecept(recept: Recept) {
-    const modalRef = this.modal.open(BekuldottreceptComponent, {
-    backdrop: true
-    });
-    modalRef.componentInstance.id = recept.id;
-  }
 
   deleteRecept(recept: Recept) {
     if (confirm('Valóban Törölni akarod a receptet?') == true) {

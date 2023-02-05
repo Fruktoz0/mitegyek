@@ -32,6 +32,7 @@ import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
 import { AngularFireStorageModule } from '@angular/fire/compat/storage';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { EditreceptComponent } from './editrecept/editrecept.component';
+import { SearchComponent } from './search/search.component';
 
 
 
@@ -50,7 +51,8 @@ import { EditreceptComponent } from './editrecept/editrecept.component';
     BekuldottreceptComponent,
     BekuldottreceptekComponent,
     UsersComponent,
-    EditreceptComponent
+    EditreceptComponent,
+    SearchComponent
   ],
   imports: [
     BrowserModule,
