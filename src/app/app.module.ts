@@ -33,6 +33,9 @@ import { AngularFireStorageModule } from '@angular/fire/compat/storage';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { EditreceptComponent } from './editrecept/editrecept.component';
 import { SearchComponent } from './search/search.component';
+import { BekuldottfajlokComponent } from './admin/bekuldottfajlok/bekuldottfajlok.component';
+import { UploadDetailsComponent } from './admin/bekuldottfajlok/upload-details/upload-details.component';
+import { UploadListComponent } from './admin/bekuldottfajlok/upload-list/upload-list.component';
 
 
 
@@ -52,7 +55,10 @@ import { SearchComponent } from './search/search.component';
     BekuldottreceptekComponent,
     UsersComponent,
     EditreceptComponent,
-    SearchComponent
+    SearchComponent,
+    BekuldottfajlokComponent,
+    UploadDetailsComponent,
+    UploadListComponent
   ],
   imports: [
     BrowserModule,
@@ -67,12 +73,6 @@ import { SearchComponent } from './search/search.component';
     AngularFireAuthModule,
     AngularFireModule.initializeApp(environment.firebase),
     
-  
-    
-
-    
-   
-
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideAuth(() => getAuth()),
     provideFirestore(() => getFirestore()),
