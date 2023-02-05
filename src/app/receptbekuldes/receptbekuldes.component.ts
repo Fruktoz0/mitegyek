@@ -16,7 +16,7 @@ import { NgForm } from '@angular/forms';
 export class ReceptbekuldesComponent {
 
   recept: Recept = new Recept();
-
+  
 
   constructor(
     public service: BaseService,
