@@ -3,13 +3,10 @@
     padding: 0px;
 }
 
-
-
 .receptNev{
     border: none !important;
     margin: 10px 0px 10px 0px;
 }
-
 
 .fileuploadBackground{
     background: #008B8B;
@@ -19,15 +16,8 @@
     height: 75%;
 }
 
-.dropzone img{
-    color: white;
-}
-
-//Beküldés
 .card{
-    background-color:#fff;
-    border:none;
-    border-radius: 12px
+    box-shadow: rgba(0, 0, 0, 0.15) 0px 1px 4px 0px;
 }
 
 .card-title{
@@ -42,7 +32,8 @@
     cursor: pointer;
 }
 
-.dropzone svg{
-    width: 100px;
-    height: 80px;
+.form-select{
+    background: #f8f9fb;
 }
+
+
