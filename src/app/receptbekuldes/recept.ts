@@ -9,7 +9,10 @@ export class Recept {
     public sutesiHofok: number = 0;
     public sutesiMod: string = '';
     public sutesiIdo: number = 0;
-    public glutenmentes: string = '';
+    public glutenmentes: boolean = false;
     public nehezseg: string ='';
     public date: string = '';
+    public hozzavalo: string = '';
+    public elkeszites: string = '';
+    public cukrotTartalmaz: boolean = false;
 }

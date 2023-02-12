@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { NgForm } from '@angular/forms';
 import { FileUploadService } from '../service/file-upload.service';
 import { FileUpload } from './file-upload';
+import { faCloudArrowUp, faCubesStacked, faWheatAwn } from '@fortawesome/free-solid-svg-icons';
 
 
 @Component({
@@ -19,6 +20,10 @@ export class ReceptbekuldesComponent {
   selectedFiles?: FileList;
   currentFileUpload?: FileUpload;
   percentage = 0;
+  fawheatawn = faWheatAwn;
+  fasugar = faCubesStacked;
+  facloud = faCloudArrowUp;
+   
 
   recept: Recept = new Recept();
 
@@ -32,7 +37,6 @@ export class ReceptbekuldesComponent {
     this.service.createRecept({ ...form.value, elfogadottRecept: false }).
       then(() => form.reset());
   }
-
 
 //Képfeltöltés
   selectFile(event: any): void {

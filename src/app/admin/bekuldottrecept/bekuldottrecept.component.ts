@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { doc, docData } from '@angular/fire/firestore';
 import { ActivatedRoute, Router } from '@angular/router';
+import { faWheatAwn } from '@fortawesome/free-solid-svg-icons';
 import { Observable } from 'rxjs';
 import { Recept } from 'src/app/receptbekuldes/recept';
 import { BaseService } from 'src/app/service/base.service';
@@ -11,6 +12,8 @@ import { BaseService } from 'src/app/service/base.service';
   styleUrls: ['./bekuldottrecept.component.scss']
 })
 export class BekuldottreceptComponent implements OnInit {
+
+  fawheatawn = faWheatAwn;
 
   @Input() id!: string;
   recept!: Recept;

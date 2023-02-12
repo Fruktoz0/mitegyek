@@ -1,0 +1,18 @@
+.card-title{
+    font-weight: 500;
+}
+
+.card-body h6:hover{
+    cursor: pointer;
+    font-weight: 600;
+    color: #2F6B63;
+}
+
+.card{
+    box-shadow: rgba(0, 0, 0, 0.15) 0px 1px 4px 0px;
+    transition: transform .3s;
+}
+
+.card:hover{
+    transform: scale(1.1);
+}

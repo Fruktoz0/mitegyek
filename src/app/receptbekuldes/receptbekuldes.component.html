@@ -1,9 +1,45 @@
-<div class="container text-center mt-1">
-    <form #receptForm="ngForm" class="container mt-1 mb-5 d-flex justify-content-center"
+<div class="container-fluid text-center mt-1">
+    <form #receptForm="ngForm" class="container-fluid mt-1 mb-5 d-flex justify-content-center"
         (ngSubmit)="onSubmit(receptForm)">
-        <div class="card px-1 py-4">
-            <h5 class="information">Recept beküldése</h5>
+        <div class="container-fluid bg-white px-1 py-4">
+            <div class="input-group input-group-lg">
+                <input [(ngModel)]="recept.receptNev" type="text" class="form-control text-center receptNev" aria-label="Large"
+                    aria-describedby="inputGroup-sizing-sm" name="receptNev" placeholder="Recept neve">
+            </div>
+            <div class="row fileuploadBackground text-white">
+                <div class="dropzone col-lg-12 mt-5">
+                    <fa-icon [icon]="facloud"></fa-icon>
+                </div>
+                <div class="row">
+                    <div class="col-lg-12">
+                        <input type="file" class="upload-input mt-3" (change)="selectFile($event)" />
+                        <div *ngIf="currentFileUpload" class="progress mx-auto mt-2 h-25 w-50 text-center">
+                            <div class="progress-bar mt-3 bg-white text-black text-center pt-2 progress-bar-info"
+                                role="progressbar" attr.aria-valuenow="{{ percentage }}" aria-valuemin="0"
+                                aria-valuemax="100" [ngStyle]="{ width: percentage + '%' }">
+                                {{ percentage }}%
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <button type="button" class="uploadButton mx-auto mt-4 mb-5 w-25 text-white" name="uploadbutton"
+                        [disabled]="!selectedFiles" (click)="upload()">Képfeltöltés</button>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-6 col-md-12 card">
+                
+            </div>
+            <div class="col-lg-6 col-md-12">
 
+            </div>
+        </div>
+
+
+
+        <!--
             <div class="frame">
                 <div class="center">
                     <div class="title">
@@ -38,6 +74,7 @@
                     <div class="form-group">
                         <input class="form-control" [(ngModel)]="this.recept.receptNev" name="receptNev" type="text"
                             placeholder="Recept neve" required>
+                           
                     </div>
                 </div>
             </div>
@@ -51,12 +88,17 @@
                         <option value="keleti">Keleti</option>
                         <option value="amerikai">Amerikai</option>
                     </select>
-                    <select [(ngModel)]="recept.glutenmentes" name="gluténmentes" class="form-control form-select"
+                    <label for="glutenmentes">Gluténmentes?</label>
+                    <select [(ngModel)]="recept.glutenmentes" name="glutenmentes" class="form-control form-select" 
                         aria-label="Default select example">
-                        <option selected>Gluténmentes</option>
-                        <option value="igen">Igen</option>
-                        <option value="nem">Nem</option>
-
+                        <option value="true">Igen</option>
+                        <option value="false">nem</option>
+                    </select>
+                    <label for="glutenmentes">Cukrot tartalmaz?</label>
+                    <select [(ngModel)]="recept.cukrotTartalmaz" name="cukrotTartalmaz" class="form-control form-select" 
+                        aria-label="Default select example">
+                        <option value="true">Igen</option>
+                        <option value="false">nem</option>
                     </select>
                     <div class="form-group">
                         <div class="input-group">
@@ -121,7 +163,8 @@
             </div>
             <div class=" d-flex flex-column text-center px-5 mt-3 mb-3"> <small class="agree-text">By Booking this
                     appointment you agree to the</small> <a href="#" class="terms">Terms & Conditions</a> </div>
+                    
             <button type="submit" class="btn btn-primary btn-block confirm-button">Confirm</button>
-        </div>
+                 -->
     </form>
 </div>

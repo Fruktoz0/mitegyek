@@ -1,9 +1,14 @@
-<div class="container mt-2">
+<div>
+  <div class="input-group mb-3 w-50 mt-4 mx-auto">
+    <input type="text" class="form-control mb-3" aria-label="Default" aria-describedby="inputGroup-sizing-default" [(ngModel)]="searchTerm" (keyup)="search()">
+  </div>
+</div>
+
+ <div class="container mt-2" *ngIf="searchResults | async as receptek">
     <form class="row">
-      <div 
-      class="col col-lg-2 col-md-12 col-sm-12" 
+      <div class="col col-lg-3 col-md-12 mb-3" 
       *ngFor="let recept of receptek; index as i">
-        <section class="mx-auto my-1" style="max-width: 18rem;">
+        <section class="mx-auto my-1" style="max-width: 20rem;">
   
           <div class="card">
   
@@ -15,29 +20,11 @@
               </a>
             </div>
             <div class="card-body">
-              <h5 class="card-title font-weight-bold mb-3 text-center">{{recept.receptNev}}</h5>
-              <hr>
-              <p class="card-text collapse" id="collapseContent">
-                Recently, we added several exotic new dishes to our restaurant menu. They come from
-                countries such as Mexico, Argentina, and Spain. Come to us, have some wine and enjoy
-                our juicy meals from around the world.
-              </p>
-              <div class="d-flex justify-content-between">
-                <div class="row">
-                  <div class="col col-lg-12">
-                    <a class="btn btn-link link-danger p-md-1 my-1" data-mdb-toggle="collapse"
-                    [routerLink]="['../bekuldottrecept', recept.id]" role="button" aria-expanded="false"
-                    aria-controls="collapseContent">Elolvasom </a>
-                  </div>
-                </div>
-                
-                <div>
-                  <i class="fas fa-share-alt text-muted p-md-1 my-1 me-2" data-mdb-toggle="tooltip"
-                    data-mdb-placement="top" title="Share this post"></i>
-                  <i class="fas fa-heart text-muted p-md-1 my-1 me-0" data-mdb-toggle="tooltip" data-mdb-placement="top"
-                    title="I like it"></i>
-                </div>
-              </div>
+              <h6 class="card-title font-weight-bolder mb-2 text-center"
+              [routerLink]="['../bekuldottrecept', recept.id]"
+              >{{recept.receptNev}}</h6>
+    
+              
             </div>
           </div>
   
@@ -47,3 +34,8 @@
     </form>
   
   </div>
+
+
+
+
+

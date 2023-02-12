@@ -1,9 +1,7 @@
-<div class="container">
+<div class="container mt-2">
   <form class="row">
-    <div 
-    class="col col-lg-2 col-md-12 col-sm-12" 
-    *ngFor="let recept of receptek; index as i">
-      <section class="mx-auto my-1" style="max-width: 18rem;">
+    <div class="col col-lg-3 col-md-12 mb-3" *ngFor="let recept of receptek; index as i">
+      <section class="mx-auto my-1" style="max-width: 20rem;">
 
         <div class="card">
 
@@ -15,32 +13,15 @@
             </a>
           </div>
           <div class="card-body">
-            <h5 class="card-title font-weight-bold mb-3 text-center">{{recept.receptNev}}</h5>
-            <hr>
-            <p class="card-text collapse" id="collapseContent">
-              Recently, we added several exotic new dishes to our restaurant menu. They come from
-              countries such as Mexico, Argentina, and Spain. Come to us, have some wine and enjoy
-              our juicy meals from around the world.
-            </p>
-            <div class="d-flex justify-content-between">
-              <div class="row">
-                <div class="col col-lg-12">
-                  <a class="btn btn-link link-danger p-md-1 my-1" data-mdb-toggle="collapse"
-                  [routerLink]="['../bekuldottrecept', recept.id]" role="button" aria-expanded="false"
-                  aria-controls="collapseContent">Elolvasom </a>
-                  <button class="btn btn-success" (click)="editRecept(recept)" ><fa-icon [icon]="pentosquare"></fa-icon></button>
-                <button class="btn btn-danger" (click)="deleteRecept(recept)" ><fa-icon [icon]="fatrash"></fa-icon></button>
-                <button class="btn btn-danger" (click)="elfogadRecept(recept)" >Elfogadás</button>
-                </div>
-              </div>
-              
-              <div>
-                <i class="fas fa-share-alt text-muted p-md-1 my-1 me-2" data-mdb-toggle="tooltip"
-                  data-mdb-placement="top" title="Share this post"></i>
-                <i class="fas fa-heart text-muted p-md-1 my-1 me-0" data-mdb-toggle="tooltip" data-mdb-placement="top"
-                  title="I like it"></i>
-              </div>
-            </div>
+            <h6 class="card-title font-weight-bolder mb-2 text-center" [routerLink]="['../bekuldottrecept', recept.id]">
+              {{recept.receptNev}}</h6>
+            <button class="btn btn-success" (click)="editRecept(recept)"><fa-icon
+                [icon]="pentosquare"></fa-icon></button>
+            <button class="btn btn-danger" (click)="deleteRecept(recept)"><fa-icon [icon]="fatrash"></fa-icon></button>
+            <button class="btn btn-danger" (click)="elfogadRecept(recept)">Elfogadás</button>
+
+
+
           </div>
         </div>
 
