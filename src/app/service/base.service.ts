@@ -3,7 +3,7 @@ import { Recept } from '../receptbekuldes/recept';
 import { Auth } from '@angular/fire/auth';
 import {
   Firestore, addDoc, collection, collectionData,
-  doc, docData, deleteDoc, updateDoc, DocumentReference, setDoc
+  doc, docData, deleteDoc, updateDoc, DocumentReference, setDoc, query, where
 } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
 
@@ -27,6 +27,9 @@ export class BaseService {
     const receptsRef = collection(this.firestore, 'receptek');
     return collectionData(receptsRef, { idField: 'id' }) as Observable<Recept[]>;
   }
+
+
+
 
   deleteRecept(recept: Recept) {
     const receptDocRef = doc(this.firestore, `receptek/${recept.id}`);

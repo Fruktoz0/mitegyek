@@ -3,7 +3,7 @@ import { Recept } from '../receptbekuldes/recept';
 import { BaseService } from '../service/base.service';
 
 import { AngularFirestore } from '@angular/fire/compat/firestore';
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
 
 @Component({
   selector: 'app-receptek',
@@ -13,7 +13,6 @@ import { Observable } from 'rxjs';
 
 
 export class ReceptekComponent implements OnInit {
-  searchResults!: Observable<any[]>;
   searchTerm: any;
   
 
@@ -31,9 +30,13 @@ export class ReceptekComponent implements OnInit {
   }
 
   search() {
-    this.searchResults = this.db.collection('receptek', ref =>
+     this.db.collection('receptek', ref =>
     ref.where('receptNev', '>=', this.searchTerm)
     .where('receptNev', '<=', this.searchTerm + '\uf8ff')
-    ).valueChanges();
+    ).valueChanges().subscribe((res: any) => {
+      this.receptek = res;
+    });
     }
+
+
 }

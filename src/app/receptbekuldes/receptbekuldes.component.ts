@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { BaseService } from '../service/base.service';
 import { Recept } from '../receptbekuldes/recept'
 import { Router } from '@angular/router';
@@ -16,29 +16,39 @@ import { faCloudArrowUp, faCubesStacked, faWheatAwn } from '@fortawesome/free-so
 
 
 
-export class ReceptbekuldesComponent {
+export class ReceptbekuldesComponent implements OnInit {
   selectedFiles?: FileList;
   currentFileUpload?: FileUpload;
   percentage = 0;
   fawheatawn = faWheatAwn;
   fasugar = faCubesStacked;
   facloud = faCloudArrowUp;
-   
 
   recept: Recept = new Recept();
 
+  hozzavalok = [{ name: 'Hozzavaló 1', value: '' }];
 
   constructor(
     public service: BaseService,
     public router: Router,
-    public uploadService: FileUploadService) { }
+    public uploadService: FileUploadService,
+  ) { }
+
+  ngOnInit(): void {
+
+  }
+
+  addHozzavalo() {
+    this.hozzavalok.push({ name: 'hozzávalók ' + (this.hozzavalok.length + 1), value: '' });
+  }
 
   onSubmit(form: NgForm) {
     this.service.createRecept({ ...form.value, elfogadottRecept: false }).
       then(() => form.reset());
+      console.log(this.recept);
   }
 
-//Képfeltöltés
+  //Képfeltöltés
   selectFile(event: any): void {
     this.selectedFiles = event.target.files;
   }

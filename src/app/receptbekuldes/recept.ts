@@ -2,7 +2,7 @@ export class Recept {
 
     public id?: string = '';
     public receptNev: string = '';
-    public kategoria: string = '';
+    public kategoria: string = 'Kategória';
     public konyha: string = '';
     public adag: string = '';
     public nehezseg: string ='';
@@ -23,10 +23,12 @@ export class Recept {
     public laktozmentes: boolean = false;
     public tejmentes: boolean = false;
 
+    public lepes: string[] = [];
+    public hozzavalo: string[] = [];
 
 
     public date: string = '';
-    public hozzavalo: string = '';
+    
     public elkeszites: string = '';
     
 }

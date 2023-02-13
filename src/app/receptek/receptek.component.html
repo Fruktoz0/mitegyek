@@ -4,7 +4,7 @@
   </div>
 </div>
 
- <div class="container mt-2" *ngIf="searchResults | async as receptek">
+ <div class="container mt-2" *ngIf="receptek">
     <form class="row">
       <div class="col col-lg-3 col-md-12 mb-3" 
       *ngFor="let recept of receptek; index as i">

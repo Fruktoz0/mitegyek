@@ -14,7 +14,7 @@
                     <div class="col-lg-12">
                         <input type="file" class="upload-input mt-3" (change)="selectFile($event)" />
                         <div *ngIf="currentFileUpload" class="progress mx-auto mt-2 h-25 w-50 text-center">
-                            <div class="progress-bar mt-3 bg-white text-black text-center pt-1 pb-1 progress-bar-info"
+                            <div class="progress-bar bg-white text-black text-center progress-bar-info"
                                 role="progressbar" attr.aria-valuenow="{{ percentage }}" aria-valuemin="0"
                                 aria-valuemax="100" [ngStyle]="{ width: percentage + '%' }">
                                 {{ percentage }}%
@@ -33,7 +33,7 @@
             <div class="col-lg-4 col-md-12 p-4 card mx-auto bg-white">
                 <h5 class="card-title mb-2">Alap információk</h5>
                 <select [(ngModel)]="recept.kategoria" class="form-select p-1" aria-label="Default select example" id="validationCustom01" name="kategoria">
-                    <option selected>Kategória</option>
+                    <option selected value="Kategória">Kategória</option>
                     <option value="Sütemény">Sütemény</option>
                     <option value="Torata">Torta</option>
                     <option value="Szósz">Szósz</option>
@@ -179,14 +179,14 @@
         </div>
 
         <div class="row ms-3 me-3">
-            <div class="col-lg-12 p-4 card mt-5">
+            <div  class="col-lg-12 p-4 card mt-5">
                 <h5 class="card-title text-start mb-2">Hozzávalók</h5>
-                <div class="form-floating mb-3">
-                    <input type="email" class="form-control" id="floatingInput" placeholder="Alapanyag">
-                    <label for="floatingInput">Alapanyag</label>
+                <div  class="form-floating mb-3" *ngFor="let hozzavalo of hozzavalok; let i = index">
+                    <input [(ngModel)]="recept.hozzavalo[i]" type="text" class="form-control" id="floatingInput" placeholder="Alapanyag" formControlName="name">
+                    <label for="floatingInput" >Alapanyag</label>
 
                 </div>
-                <button class="btn btn-primary">Hozzávaló hozzáadása</button>
+                <button type="button" class="btn btn-primary" (click)="addHozzavalo()">Hozzávaló hozzáadása</button>
 
             </div>
 
@@ -195,8 +195,8 @@
         <div class="row ms-3 me-3">
             <div class="col-lg-12 p-4 card mt-5">
                 <h5 class="card-title text-start mb-2">Lépések</h5>
-                <div class="form-floating mb-3">
-                    <input type="email" class="form-control" id="floatingInput" placeholder="Alapanyag">
+                <div class="form-floating mb-3" >
+                    <input type="email" class="form-control" id="floatingInput" placeholder="Alapanyag" name="lepes">
                     <label for="floatingInput">Lépés</label>
 
                 </div>
