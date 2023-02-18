@@ -17,6 +17,11 @@ body {
   box-shadow: rgba(0, 0, 0, 0.15) 0px 1px 4px 0px;
 }
 
+.hozzavalok{
+  margin-top: -20px;
+  font-size: 15px;
+}
+
 .elkeszitesiInfo {
   background: #f8f9fb;
 }
@@ -27,7 +32,7 @@ body {
 
 ul li::marker {
   color: #2F6B63;
-  font-size: 20px;
+  font-size: 15px;
 }
 
 ol li:hover{

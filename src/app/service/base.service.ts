@@ -3,9 +3,11 @@ import { Recept } from '../receptbekuldes/recept';
 import { Auth } from '@angular/fire/auth';
 import {
   Firestore, addDoc, collection, collectionData,
-  doc, docData, deleteDoc, updateDoc, DocumentReference, setDoc, query, where
+  doc, docData, deleteDoc, updateDoc, DocumentReference, setDoc, query, where, getDoc, serverTimestamp, FieldValue, 
 } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
+
+
 
 
 @Injectable({
@@ -20,7 +22,8 @@ export class BaseService {
 
   createRecept(recept: Recept) {
     const receptRef = collection(this.firestore, 'receptek');
-    return addDoc(receptRef, recept);
+    const receptWithTimestamp = {...recept, date: serverTimestamp()};
+      return addDoc(receptRef, receptWithTimestamp);
   }
 
   getRecept(): Observable<Recept[]> {
@@ -28,8 +31,23 @@ export class BaseService {
     return collectionData(receptsRef, { idField: 'id' }) as Observable<Recept[]>;
   }
 
+  //Bekuldottrecept
 
-
+  incrementPlus(recept: Recept) {
+    const receptDocRef = doc(this.firestore, `receptek/${recept.id}`);
+    getDoc(receptDocRef).then((doc) => {
+      if (doc.exists()) {
+        const recept = doc.data() as Recept;
+        const elkeszitettem = isNaN(recept.elkeszitettem) ? 0 : recept.elkeszitettem;
+        const updatedRecept = { ...recept, elkeszitettem: elkeszitettem + 1 };
+        updateDoc(receptDocRef, updatedRecept).then(() => {
+          console.log('Sikeres Mentes');
+        }).catch((error) => {
+          console.log('Hiba a mentés során:', error);
+        });
+      }
+    });
+  }
 
   deleteRecept(recept: Recept) {
     const receptDocRef = doc(this.firestore, `receptek/${recept.id}`);
@@ -51,9 +69,9 @@ export class BaseService {
     return updateDoc(receptDocRef, { price: amount });
   }
 
-  elfogadRecept(recept: Recept){
+  elfogadRecept(recept: Recept) {
     const receptDocRef = doc(this.firestore, `receptek/${recept.id}`);
-    return setDoc(receptDocRef, {...recept, elfogadottRecept: true});
+    return setDoc(receptDocRef, { ...recept, elfogadottRecept: true });
   }
 
 

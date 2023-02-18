@@ -1,10 +1,12 @@
 <div class="container-fluid text-center mt-1">
-    <form #receptForm="ngForm" class="container-fluid mt-1 mb-5" (ngSubmit)="onSubmit(receptForm)">
+    <form [formGroup]="receptForm" (ngSubmit)="onSubmit(receptForm)" class="container-fluid mt-1 mb-5">
         <div class="container-fluid bg-white px-1 py-4">
             <div class="input-group input-group-lg">
-                <input [(ngModel)]="recept.receptNev" type="text" class="form-control text-center receptNev"
+                <input formControlName="receptNev" type="text" class="form-control text-center receptNev shadow-none"
                     aria-label="Large" aria-describedby="inputGroup-sizing-sm" name="receptNev"
                     placeholder="Recept neve">
+
+
             </div>
             <div class="row fileuploadBackground text-white">
                 <div class="dropzone col-lg-12 mt-5">
@@ -32,7 +34,8 @@
         <div class="row mt-2 needs-validation">
             <div class="col-lg-4 col-md-12 p-4 card mx-auto bg-white">
                 <h5 class="card-title mb-2">Alap információk</h5>
-                <select [(ngModel)]="recept.kategoria" class="form-select p-1" aria-label="Default select example" id="validationCustom01" name="kategoria">
+                <select formControlName="kategoria" class="form-select p-1" aria-label="Default select example"
+                    id="validationCustom01" name="kategoria">
                     <option selected value="Kategória">Kategória</option>
                     <option value="Sütemény">Sütemény</option>
                     <option value="Torata">Torta</option>
@@ -42,14 +45,16 @@
                     <option value="Fánk">Fánk</option>
                 </select>
 
-                <select [(ngModel)]="recept.konyha" class="form-select p-1 mt-2" aria-label="Default select example" name="konyha">
+                <select formControlName="konyha" class="form-select p-1 mt-2" aria-label="Default select example"
+                    name="konyha">
                     <option selected>Konyha</option>
                     <option value="Amerikai">Amerikai</option>
                     <option value="Egzotikus">Egzotikus</option>
                     <option value="Magyar">Magyar</option>
                 </select>
 
-                <select [(ngModel)]="recept.adag" class="form-select p-1 mt-2" aria-label="Default select example" name="adag">
+                <select formControlName="adag" class="form-select p-1 mt-2" aria-label="Default select example"
+                    name="adag">
                     <option selected>Adag mérete</option>
                     <option value="1 főre">1 főre</option>
                     <option value="2 főre">2 főre</option>
@@ -58,14 +63,16 @@
                     <option value="5 főre">5 főre</option>
                 </select>
 
-                <select [(ngModel)]="recept.nehezseg" class="form-select p-1 mt-2" aria-label="Default select example" name="nehezseg">
+                <select formControlName="nehezseg" class="form-select p-1 mt-2" aria-label="Default select example"
+                    name="nehezseg">
                     <option selected>Nehézség</option>
                     <option value="Könnyű">Könnyű</option>
                     <option value="Közepes">Közepes</option>
                     <option value="Nehéz">Nehéz</option>
                 </select>
 
-                <select [(ngModel)]="recept.koltseg" class="form-select p-1 mt-2" aria-label="Default select example" name="koltseg">
+                <select formControlName="koltseg" class="form-select p-1 mt-2" aria-label="Default select example"
+                    name="koltseg">
                     <option selected>Költség</option>
                     <option value="Olcsó">Olcsó</option>
                     <option value="Megfizethető">Megfizethető</option>
@@ -77,14 +84,16 @@
 
             <div class="col-lg-4 col-md-12 p-4 card mx-auto">
                 <h5 class="card-title mb-2">Sütési információk</h5>
-                <select [(ngModel)]="recept.elokeszulesiIdo" class="form-select p-1" aria-label="Default select example" id="validationCustom01" name="elokeszulesiIdo">
+                <select formControlName="elokeszulesiIdo" class="form-select p-1" aria-label="Default select example"
+                    id="validationCustom01" name="elokeszulesiIdo">
                     <option selected>Előkészülési idő</option>
                     <option value="10 perc">10 perc</option>
                     <option value="20 perc">20 perc</option>
                     <option value="30 perc">30 perc</option>
                 </select>
 
-                <select [(ngModel)]="recept.elkeszitesiIdo" class="form-select p-1 mt-2" aria-label="Default select example" name="elkeszitesiIdo">
+                <select [(ngModel)]="recept.elkeszitesiIdo" class="form-select p-1 mt-2"
+                    aria-label="Default select example" name="elkeszitesiIdo">
                     <option selected>Elkészítési idő</option>
                     <option value="10 perc">10 perc</option>
                     <option value="30 perc">30 perc</option>
@@ -93,20 +102,23 @@
                     <option value="120 perc">120 perc</option>
                 </select>
 
-                <select [(ngModel)]="recept.sutesiMod" class="form-select p-1 mt-2" aria-label="Default select example" name="sutesiMod">
+                <select [(ngModel)]="recept.sutesiMod" class="form-select p-1 mt-2" aria-label="Default select example"
+                    name="sutesiMod">
                     <option selected>Sütési mód</option>
                     <option value="Hőlégkeveréses">Hőlégkeveréses</option>
                     <option value="Alul felül sütés">Alul felül sütés</option>
                 </select>
 
-                <select class="form-select p-1 mt-2" aria-label="Default select example">
+                <select formControlName="nehezseg" class="form-select p-1 mt-2" aria-label="Default select example"
+                    name="nehezseg">
                     <option selected>Nehézség</option>
                     <option value="1">Könnyű</option>
                     <option value="2">Közepes</option>
                     <option value="3">Nehéz</option>
                 </select>
 
-                <select class="form-select p-1 mt-2" aria-label="Default select example">
+                <select formControlName="koltseg" class="form-select p-1 mt-2" aria-label="Default select example"
+                    name="koltseg">
                     <option selected>Költség</option>
                     <option value="1">Olcsó</option>
                     <option value="2">Megfizethető</option>
@@ -118,31 +130,36 @@
         <div class="row mt-3 needs-validation">
             <div class="col-lg-4 col-md-12 p-4 card mx-auto bg-white">
                 <h5 class="card-title mb-2">Fontos információk</h5>
-                <select [(ngModel)]="recept.cukrotTartalmaz" class="form-select p-1" aria-label="Default select example" id="validationCustom01" name="cukrotTartalmaz">
+                <select [(ngModel)]="recept.cukrotTartalmaz" class="form-select p-1" aria-label="Default select example"
+                    id="validationCustom01" name="cukrotTartalmaz">
                     <option selected>Cukormentes</option>
                     <option value="true">Igen</option>
                     <option value="false">Nem</option>
                 </select>
 
-                <select [(ngModel)]="recept.glutenmentes" class="form-select p-1 mt-2" aria-label="Default select example" name="glutenmentes">
+                <select [(ngModel)]="recept.glutenmentes" class="form-select p-1 mt-2"
+                    aria-label="Default select example" name="glutenmentes">
                     <option selected>Gluténmentes</option>
                     <option value="true">Igen</option>
                     <option value="false">Nem</option>
                 </select>
 
-                <select [(ngModel)]="recept.laktozmentes" class="form-select p-1 mt-2" aria-label="Default select example" name="laktozmentes">
+                <select [(ngModel)]="recept.laktozmentes" class="form-select p-1 mt-2"
+                    aria-label="Default select example" name="laktozmentes">
                     <option selected>Laktózmentes</option>
                     <option value="true">Igen</option>
                     <option value="false">Nem</option>
                 </select>
 
-                <select [(ngModel)]="recept.tojasmentes" class="form-select p-1 mt-2" aria-label="Default select example" name="tojasmentes">
+                <select [(ngModel)]="recept.tojasmentes" class="form-select p-1 mt-2"
+                    aria-label="Default select example" name="tojasmentes">
                     <option selected>Tojásmentes</option>
                     <option value="true">Igen</option>
                     <option value="false">Nem</option>
                 </select>
 
-                <select [(ngModel)]="recept.tejmentes" class="form-select p-1 mt-2" aria-label="Default select example" name="tejmentes">
+                <select [(ngModel)]="recept.tejmentes" class="form-select p-1 mt-2" aria-label="Default select example"
+                    name="tejmentes">
                     <option selected>Tejmentes</option>
                     <option value="true">Igen</option>
                     <option value="false">Nem</option>
@@ -179,168 +196,37 @@
         </div>
 
         <div class="row ms-3 me-3">
-            <div  class="col-lg-12 p-4 card mt-5">
+            <div class="col-lg-12 p-4 card mt-5">
                 <h5 class="card-title text-start mb-2">Hozzávalók</h5>
-                <div  class="form-floating mb-3" *ngFor="let hozzavalo of hozzavalok; let i = index">
-                    <input [(ngModel)]="recept.hozzavalo[i]" type="text" class="form-control" id="floatingInput" placeholder="Alapanyag" formControlName="name">
-                    <label for="floatingInput" >Alapanyag</label>
+                <div formArrayName="hozzavalok" class="form-floating mb-3">
+                    <ng-container *ngFor="let hozzavalok of getHozzavalok(); let i = index">
+                        <input type="text" [formControlName]="i" type="text" class="form-control" id="floatingInput"
+                            placeholder="Alapanyag">
+                        <label for="floatingInput">Alapanyag</label>
+                        <button class="btn btn-danger" (click)="deleteHozzavalo(i)">Törlés</button>
+                    </ng-container>
 
                 </div>
-                <button type="button" class="btn btn-primary" (click)="addHozzavalo()">Hozzávaló hozzáadása</button>
-
+                <button type="button" class="btn btn-primary" (click)="addHozzavalo()">Hozzavalo hozzáadása</button>
             </div>
-
         </div>
 
-        <div class="row ms-3 me-3">
+        <div formArrayName="lepesek" class="row ms-3 me-3">
             <div class="col-lg-12 p-4 card mt-5">
                 <h5 class="card-title text-start mb-2">Lépések</h5>
-                <div class="form-floating mb-3" >
+                <div class="form-floating mb-3">
                     <input type="email" class="form-control" id="floatingInput" placeholder="Alapanyag" name="lepes">
                     <label for="floatingInput">Lépés</label>
-
                 </div>
                 <button class="btn btn-primary">Lépés hozzáadása</button>
-
             </div>
-
+        </div>
+        <div class="row">
+            <div class="col col-lg-3 md-12 mx-auto mt-4">
+                <button type="submit" class="btn btn-primary btn-block p-2 confirm-button">Recept beküldése</button>
+            </div>
         </div>
 
 
-
-
-        <!--
-            <div class="frame">
-                <div class="center">
-                    <div class="title">
-                        <h1>Drop file to upload</h1>
-                    </div>
-
-                    <div class="dropzone">
-                        <img src="http://100dayscss.com/codepen/upload.svg" class="upload-icon" />
-                        <input type="file" class="upload-input" (change)="selectFile($event)" />
-                    </div>
-
-                    <button type="button" class="normalButton" name="uploadbutton" [disabled]="!selectedFiles" (click)="upload()">Upload
-                        file</button>
-                        <div *ngIf="currentFileUpload" class="progress mt-2">
-                            <div
-                              class="progress-bar progress-bar-info"
-                              role="progressbar"
-                              attr.aria-valuenow="{{ percentage }}"
-                              aria-valuemin="0"
-                              aria-valuemax="100"
-                              [ngStyle]="{ width: percentage + '%' }"
-                            >
-                              {{ percentage }}%
-                            </div>
-                          </div> 
-
-                </div>
-            </div>
-
-            <div class="row">
-                <div class="col-sm-12">
-                    <div class="form-group">
-                        <input class="form-control" [(ngModel)]="this.recept.receptNev" name="receptNev" type="text"
-                            placeholder="Recept neve" required>
-                           
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-sm-12">
-                    <span class="mt-2">Alap információk:</span>
-                    <select [(ngModel)]="recept.kategoria" class="form-control form-select"
-                        aria-label="Default select example" name="kategoria">
-                        <option selected>Kategória</option>
-                        <option value="egzotikus">Egzotikus</option>
-                        <option value="keleti">Keleti</option>
-                        <option value="amerikai">Amerikai</option>
-                    </select>
-                    <label for="glutenmentes">Gluténmentes?</label>
-                    <select [(ngModel)]="recept.glutenmentes" name="glutenmentes" class="form-control form-select" 
-                        aria-label="Default select example">
-                        <option value="true">Igen</option>
-                        <option value="false">nem</option>
-                    </select>
-                    <label for="glutenmentes">Cukrot tartalmaz?</label>
-                    <select [(ngModel)]="recept.cukrotTartalmaz" name="cukrotTartalmaz" class="form-control form-select" 
-                        aria-label="Default select example">
-                        <option value="true">Igen</option>
-                        <option value="false">nem</option>
-                    </select>
-                    <div class="form-group">
-                        <div class="input-group">
-                            <input [(ngModel)]="recept.nehezseg" class="form-control" type="text" placeholder="Nehézség"
-                                name="nehezseg">
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-sm-12">
-                    <div class="form-group">
-                        <div class="input-group">
-                            <input [(ngModel)]="recept.elokeszulesiIdo" class="form-control" type="text"
-                                placeholder="Előkészülési idő" name="elokeszulesIIdo">
-                        </div>
-                        <div class="input-group">
-                            <input [(ngModel)]="recept.elkeszitesiIdo" class="form-control" type="text"
-                                placeholder="Elkészítési idő" name="elkeszitesiIdo">
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="row">
-                <div class="col-sm-12">
-                    <div class="form-group">
-                        <span>Sütési információk</span>
-                        <div class="input-group">
-                            <input [(ngModel)]="recept.sutesiIdo" class="form-control" type="text"
-                                placeholder="Sütési idő" name="sutesiIdo">
-                        </div>
-                        <div class="input-group">
-                            <input [(ngModel)]="recept.sutesiHofok" class="form-control" type="text"
-                                placeholder="Sütési hőfok" name="sutesiHofok">
-                        </div>
-                        <select [(ngModel)]="recept.sutesiMod" class="form-control form-select"
-                            aria-label="Default select example" name="sutesimod">
-                            <option selected>Sütési mód</option>
-                            <option value="Alul">Alul</option>
-                            <option value="Felül">Felül</option>
-                            <option>Alul Felül légkeveréses</option>
-                        </select>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-sm-12">
-                    <div class="form-group">
-                        <span>Mikori étkezés</span>
-                        <select ngModel class="form-control form-select" aria-label="Default select example"
-                            name="napszak">
-                            <option selected>Étkezés kiválasztása</option>
-                            <option>Reggeli</option>
-                            <option>Tízórai</option>
-                            <option>Ebéd</option>
-                            <option>Uzsonna</option>
-                            <option>Vacsora</option>
-                        </select>
-                    </div>
-                </div>
-            </div>
-            <div class=" d-flex flex-column text-center px-5 mt-3 mb-3"> <small class="agree-text">By Booking this
-                    appointment you agree to the</small> <a href="#" class="terms">Terms & Conditions</a> </div>
-                 -->   
-
-                 <div class="row">
-                    <div class="col col-lg-3 md-12 mx-auto mt-4">
-                        <button type="submit" class="btn btn-primary btn-block p-2 confirm-button">Recept beküldése</button>
-                    </div>
-                 </div>
-           
-                 
     </form>
 </div>

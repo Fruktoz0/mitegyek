@@ -1,14 +1,14 @@
 <div class="container mt-3 bg-white" *ngIf="recept">
   <div class="row text-center pt-3">
-    <div class="col col-sm-12">
+    <div class="col-md-12">
       <h1 class="mb-3">{{recept.receptNev}}</h1>
-      <button class="kategoria me-3">{{recept.kategoria}}</button>
-      <button class="kategoria me-3">{{ recept.glutenmentes ? 'Glutenmentes' : 'Glutént tartalmazhat' }}</button>
-      <button class="kategoria me-3">{{ recept.cukrotTartalmaz ? 'Cukrot tartalmaz' : 'Cukormentes' }}</button>
-      <button class="kategoria me-3">{{ recept.tejmentes ? 'Tejmentes' : 'Tejet tartalmaz' }}</button>
-      <button class="kategoria me-3">{{ recept.tojasmentes ? 'Tojásmentes' : 'Tojást tartalmaz' }}</button>
-      <button class="kategoria me-3">{{ recept.laktozmentes ? 'Laktozmentes' : 'Laktózt tartalmaz' }}</button>
-     
+      <button class="kategoria me-3 mt-2">{{recept.kategoria}}</button>
+      <button class="kategoria me-3 mt-2">{{ recept.glutenmentes ? 'Glutenmentes' : 'Glutént tartalmazhat' }}</button>
+      <button class="kategoria me-3 mt-2">{{ recept.cukrotTartalmaz ? 'Cukrot tartalmaz' : 'Cukormentes' }}</button>
+      <button class="kategoria me-3 mt-2">{{ recept.tejmentes ? 'Tejmentes' : 'Tejet tartalmaz' }}</button>
+      <button class="kategoria me-3 mt-2">{{ recept.tojasmentes ? 'Tojásmentes' : 'Tojást tartalmaz' }}</button>
+      <button class="kategoria me-3 mt-2">{{ recept.laktozmentes ? 'Laktozmentes' : 'Laktózt tartalmaz' }}</button>
+
     </div>
   </div>
   <div class="row">
@@ -39,9 +39,9 @@
     </div>
   </div>
   <div class="row mt-3 hozzavalok">
-    <h2 class="mb-4">Hozzávalók</h2>
-    <ul>
-      <li class="ms-3">alma</li>
+    <h2 class="mb-5">Hozzávalók</h2>
+    <ul class="hozzavalok" *ngFor="let hozzavalo of recept.hozzavalok">
+      <li class="ms-3"> {{hozzavalo}}</li>
     </ul>
   </div>
   <div class="container">
@@ -52,24 +52,24 @@
       <h2>Elkészítés</h2>
     </div>
   </div>
-  <div class="row mt-3">
+  <div class="row mt-2">
     <ol>
-      <li class="ms-3">
-        <p class="ms-2">{{recept.elkeszites}}</p>
+      <li class="ms-3" *ngFor="let lepes of recept.lepesek">
+        <p class="ms-2">{{lepes}}</p>
       </li>
     </ol>
   </div>
   <div class="row">
     <div class="col col-md-3">
-      <button class="btn btn-success">Elkészítettem</button>
+      <button class="btn btn-success" (click)="increment()">Elkészítettem</button>
     </div>
   </div>
   <div>
     <hr>
   </div>
-  <div class="row mt-3">
-    <p>A recept elkészítve: alkalommal</p>
-    <p>Feltöltés dátuma: .....</p>
+  <div class="row mt-3" *ngFor="let recept of [recept]">
+    <p>A recept elkészítve: {{recept.elkeszitettem}} alkalommal</p>
+    <p>Feltöltés dátuma: {{formatDate(recept.date)}}</p>
     <p>Feltöltötte: ...</p>
   </div>
 

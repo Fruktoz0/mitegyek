@@ -13,16 +13,19 @@ import { BaseService } from 'src/app/service/base.service';
 })
 export class BekuldottreceptComponent implements OnInit {
 
+  counter: number = 0;
   fawheatawn = faWheatAwn;
 
   @Input() id!: string;
   recept!: Recept;
+  loading = true;
 
   constructor(
     public service: BaseService,
     public router: Router,
-    public route: ActivatedRoute
-  ) { }
+    public route: ActivatedRoute,
+
+  ) {}
 
   ngOnInit(): void {
 
@@ -32,13 +35,19 @@ export class BekuldottreceptComponent implements OnInit {
           this.recept = res
         })
       }
-
-      /*   if (this.id)
-         this.service.getReceptByID(this.id).subscribe(res => {
-           this.recept = res
-         });*/
     })
   }
+
+  increment(){
+    return this.service.incrementPlus(this.recept);
+  }
+
+  formatDate(timestamp: any): string {
+    const date = timestamp.toDate();
+    return date.getFullYear() + '.' + (date.getMonth() + 1) + '.' + date.getDate();
+  }
+
+
 }
 
 

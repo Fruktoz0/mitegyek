@@ -9,10 +9,17 @@ export class Recept {
     public koltseg: string ='';
 
     public elfogadottRecept: boolean = false;
+
     public elokeszulesiIdo: number = 0;
     public elkeszitesiIdo: number = 0;
     public sutesiIdo: number = 0;
-    public sutesiMod: string = '';  
+    public sutesiMod: string = ''; 
+    
+    public hozzavalok: Array<any> = [];
+    public lepesek: Array<any> = [];
+    public elkeszitettem: number = 0;
+
+    public date: Date = new Date();
 
 
     public sutesiHofok: number = 0;
@@ -23,11 +30,9 @@ export class Recept {
     public laktozmentes: boolean = false;
     public tejmentes: boolean = false;
 
-    public lepes: string[] = [];
-    public hozzavalo: string[] = [];
 
 
-    public date: string = '';
+
     
     public elkeszites: string = '';
     
