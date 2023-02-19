@@ -35,10 +35,7 @@ export class MitegyekmaComponent {
       .pipe(map(([one]) => [...one]))
       .subscribe((response: any) => {
         this.receptek = response;
-        if (response.length > 0) {
-        } else {
-          this.isSearchEmpty = true;
-        }
+       
       });
 
   }

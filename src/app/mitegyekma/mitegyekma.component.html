@@ -29,11 +29,12 @@
                     <span class="card-title">Gluténmentes?</span>
                     <div class="col-md-12">
                         <div class="btn-group mt-2 mb-3" role="group" aria-label="Basic radio toggle button group">
-                            <input type="radio" class="btn-check" name="glutenmentes" id="glutenmentesIgen" autocomplete="off"
+                            <input [(ngModel)]="searchParams.glutenmentes" type="radio" class="btn-check" name="glutenmentes" id="glutenmentesIgen" autocomplete="off"
                                 value="true">
                             <label class="btn-kivalaszt" for="glutenmentesIgen">Igen</label>
         
-                            <input type="radio" class="btn-check" name="glutenmentes" id="glutenmentesNem" autocomplete="off"
+                            <input  #name="ngModel"
+                            [(ngModel)]="searchParams.glutenmentes" type="radio" class="btn-check" name="glutenmentes" id="glutenmentesNem" autocomplete="off"
                                 value="false" >
                             <label class="btn-kivalaszt ms-1" for="glutenmentesNem">Nem</label>
                         </div>
@@ -49,6 +50,9 @@
         </div>
 
     </form>
+
+
+
 
 
         <div class="container mt-2" *ngIf="receptek">
