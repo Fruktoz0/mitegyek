@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
-import { GoogleAuthProvider } from 'firebase/auth';
+import { GoogleAuthProvider, User } from 'firebase/auth';
 
 import {
   Auth,
@@ -11,19 +11,36 @@ import { Router } from '@angular/router';
 
 
 
-
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
+ 
 
-  constructor(public afAuth: AngularFireAuth, public auth: Auth, public router: Router) { }
+  userData: any;
+  listUsers: any;
+  
 
+  constructor(
+    public afAuth: AngularFireAuth, 
+    public auth: Auth, 
+    public router: Router,
 
+    ) {
+      this.afAuth.authState.subscribe((user) => {
+        if (user) {
+          this.userData = user;
+          localStorage.setItem('user', JSON.stringify(this.userData));
+          JSON.parse(localStorage.getItem('user')!);
+        } else {
+          localStorage.setItem('user', 'null');
+          JSON.parse(localStorage.getItem('user')!);
+        }
+      });
+     }
 
 
   //Login
-
   GoogleAuth() {
     return this.AuthLogin(new GoogleAuthProvider());
   }
@@ -71,7 +88,6 @@ export class AuthService {
   getEmail(): string | null {
     return localStorage.getItem('email');
   }
-
 
   //Register
   handleRegister(value: any) {

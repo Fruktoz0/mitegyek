@@ -1,0 +1,23 @@
+<div class="container-fluid vh-100">
+        <main role="main" class="container-fluid ml-sm-auto col-lg-12 px-4 text-white">
+            <div class="inner-adjust">
+                <div class="row pt-5 user" *ngIf="authService.userData as user">
+                    <div class="col-md-2 col-sm-12">
+                        <img class="align-self-start mr-5 img-thumbnail rounded-circle"
+                        src="{{(user.photoURL) ? user.photoURL : '/assets/dummy-user.png'}}"
+                        alt="{{user.displayName}}">
+                    </div>
+                    <div class="col-md-10 col-sm-12">
+                        <div class="media">
+                            <div class="media-body">
+                                <h1>Hello: <strong>{{(user.displayName) ? user.displayName : 'User'}}</strong></h1>
+                                <p>User ID: <strong>{{user.uid}}</strong></p>
+                                <p>Email: <strong>{{user.email}}</strong></p>
+                                <p>Email megerősítve: <strong>{{user.emailVerified}}</strong></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+</div>

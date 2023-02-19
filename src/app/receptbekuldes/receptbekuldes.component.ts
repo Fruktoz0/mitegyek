@@ -5,7 +5,9 @@ import { Router } from '@angular/router';
 import { FormArray, FormBuilder, FormControl, FormGroup, NgForm, Validators } from '@angular/forms';
 import { FileUploadService } from '../service/file-upload.service';
 import { FileUpload } from './file-upload';
-import { faCloudArrowUp, faCubesStacked, faWheatAwn } from '@fortawesome/free-solid-svg-icons';
+import { faCirclePlus, faCloudArrowUp, faCubesStacked, faFileArrowUp, faFileCirclePlus, faTrash, faTrashCan, faWheatAwn } from '@fortawesome/free-solid-svg-icons';
+import { Firestore } from 'firebase/firestore';
+import { AngularFirestore } from '@angular/fire/compat/firestore';
 
 
 @Component({
@@ -23,22 +25,24 @@ export class ReceptbekuldesComponent implements OnInit {
   fawheatawn = faWheatAwn;
   fasugar = faCubesStacked;
   facloud = faCloudArrowUp;
+  fatrash = faTrashCan;
+  faplus = faCirclePlus;
+  filearrowup = faFileArrowUp;
+  id: string = '';
 
   recept: Recept = new Recept();
-
-
-
 
   constructor(
     public service: BaseService,
     public router: Router,
     public uploadService: FileUploadService,
+    public firestore: AngularFirestore,
     private fb: FormBuilder
   ) { }
 
   ngOnInit(): void {
     this.receptForm.valueChanges.subscribe(val => {
-      console.log(val);
+  
     })
   }
 
@@ -58,21 +62,26 @@ export class ReceptbekuldesComponent implements OnInit {
 
 
   receptForm = this.fb.group({
-    receptNev: ["", this.nameValidator],
+    receptNev: [""],
     kategoria: [""],
     konyha: [""],
     adag: [""],
     nehezseg: [""],
     koltseg: [""],
     elokeszulesiIdo: [""],
+    imgUrl: [""],
+    napszak: [""],
+    glutenmentes: [""],
+    cukrotTartalmaz: [""],
+    tojasmentes: [""],
+    laktozmentes: [""],
+    tejmentes: [""],
+    
     hozzavalok: this.fb.array([
       [""],
-      [""]
     ]),
     lepesek: this.fb.array([
-      [],
-      [],
-      []
+      [""],
     ])
 
   });
@@ -90,11 +99,27 @@ export class ReceptbekuldesComponent implements OnInit {
   }
 
 
+  getLepesek() {
+    return (this.receptForm.get('lepesek') as FormArray).controls as FormControl[]
+  }
+
+  addLepes() {
+    (this.receptForm.get('lepesek') as FormArray).push(new FormControl(''))
+  }
+
+  deleteLepes(i: number) {
+    (this.receptForm.get('lepesek') as FormArray).removeAt(i)
+  }
+
+
+
+
+
   onSubmit(form: FormGroup) {
     this.receptForm.markAllAsTouched()
     this.service.createRecept({ ...form.value, elfogadottRecept: false,}).
       then(() => form.reset());
-    console.log(this.recept);
+    
   }
 
   //Képfeltöltés
@@ -102,26 +127,33 @@ export class ReceptbekuldesComponent implements OnInit {
     this.selectedFiles = event.target.files;
   }
 
-  upload(): void {
+  upload(id: string,): void {
     if (this.selectedFiles) {
       const file: File | null = this.selectedFiles.item(0);
       this.selectedFiles = undefined;
-
+  
       if (file) {
-        this.currentFileUpload = new FileUpload(file);
-        this.uploadService.pushFileToStorage(this.currentFileUpload).subscribe(
+        const fileUpload = new FileUpload(file);
+        this.uploadService.pushFileToStorage(id, fileUpload).subscribe(
           percentage => {
             this.percentage = Math.round(percentage ? percentage : 0);
           },
           error => {
             console.log(error);
+          },
+          () => {
+            this.firestore.collection('receptek').doc(id).set({ imageUrl: fileUpload.url });
           }
         );
       }
-
     }
   }
-}
+  
+    
+  }
+
+
+
 
 
 

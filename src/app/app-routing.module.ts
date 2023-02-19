@@ -14,6 +14,7 @@ import { SearchComponent } from './search/search.component';
 import { BekuldottfajlokComponent } from './admin/bekuldottfajlok/bekuldottfajlok.component';
 import { UploadDetailsComponent } from './admin/bekuldottfajlok/upload-details/upload-details.component';
 import { UploadListComponent } from './admin/bekuldottfajlok/upload-list/upload-list.component';
+import { UserComponent } from './user/user.component';
 
 const routes: Routes = [
   {path: '', redirectTo: 'mitegyekma', pathMatch: 'full'},
@@ -41,6 +42,7 @@ const routes: Routes = [
   {path: 'search', component: SearchComponent},
   {path: 'editrecept', component: EditreceptComponent},
   {path: 'login', component: LoginComponent},
+  {path: 'user', component: UserComponent},
   {path: '**', redirectTo: 'mitegyekma', pathMatch: 'full'},
 
 

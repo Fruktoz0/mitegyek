@@ -36,4 +36,57 @@
     background: #f8f9fb;
 }
 
+.deleteButton{
+    color: red;
+    cursor: pointer;
+}
+
+.addButton{
+    color: #2F6B63;
+    cursor: pointer;
+}
+
+.btn-check:checked + .btn-kivalaszt {
+    background-color: #2F6B63;
+    color: white;
+  }
+
+.btn-kivalaszt{
+    color: black;
+    background-color: #f0f0f0;
+    border: none;
+    width: 90px;
+    height: 40px;
+    padding-top: 10px;
+    cursor: pointer;
+}
+
+.btn-kivalasztSmall{
+    color: black;
+    background-color: #f0f0f0;
+    border: none;
+    width: 60px;
+    height: 30px;
+    padding-top: 5px;
+    cursor: pointer;
+}
+
+
+.btn-check:checked + .btn-kivalasztSmall {
+    background-color: #2F6B63;
+    color: white;
+  }
+
+.confirm-button{
+    background-color: #2F6B63;
+    color: white;
+    width: 150px;
+    height: 40px;
+    border: none;
+    cursor: pointer;
+}
+
+
+
+
 

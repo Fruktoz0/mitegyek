@@ -1,6 +1,7 @@
 import { Component, Input } from '@angular/core';
-import { FileUpload } from 'src/app/receptbekuldes/file-upload';
+
 import { FileUploadService } from 'src/app/service/file-upload.service';
+import { FileUpload } from '../file-upload';
 
 @Component({
   selector: 'app-upload-details',
@@ -8,10 +9,9 @@ import { FileUploadService } from 'src/app/service/file-upload.service';
   styleUrls: ['./upload-details.component.scss']
 })
 export class UploadDetailsComponent {
-  
   @Input() fileUpload!: FileUpload;
 
-  constructor(public uploadService: FileUploadService){}
+  constructor(private uploadService: FileUploadService){}
 
   deleteFileUpload(fileUpload: FileUpload): void {
     this.uploadService.deleteFile(fileUpload);

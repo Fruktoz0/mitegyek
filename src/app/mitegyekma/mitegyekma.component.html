@@ -1,74 +1,85 @@
-<div class="container-fluid text-center pt-5 pb-3 bg-light">
-    <div class="container  mb-5 d-flex justify-content-center ">
+<div class="text-center pt-5 pb-3 bg-light">
+    <form class="mb-5 d-flex justify-content-center ">
         <div class="card px-1 py-4">
             <div class="card-body">
                 <h1>Mit ennél ma ?</h1>
-                <span class="card-title mb-3">Napszak kiválasztása</span>
-                <div class="d-flex flex-row mt-2">
-                    <label class="radio mr-1">
-                        <input type="radio" name="add" value="anz" checked>
-                        <span> <i class="fa fa-user"></i>Reggeli</span>
-                    </label>
-                    <label class="radio">
-                        <input type="radio" name="tizorai" value="tizorai">
-                         <span> <i class="fa fa-plus-circle"></i>Tízórai</span>
-                    </label>
-                    <label class="radio">
-                        <input type="radio" name="add" value="add">
-                         <span> <i class="fa fa-plus-circle"></i>Ebéd</span>
-                    </label>
-                    <label class="radio">
-                        <input type="radio" name="add" value="add">
-                         <span> <i class="fa fa-plus-circle"></i>Uzsonna</span>
-                    </label>
-                    <label class="radio">
-                        <input type="radio" name="add" value="add">
-                         <span> <i class="fa fa-plus-circle"></i>Vacsora</span>
-                    </label>
+                <span class="card-title">Napszak kiválasztása</span>
+                <div class="btn-group w-75 mt-3 mb-3" role="group" aria-label="Basic radio toggle button group">
+                    <input type="radio" class="btn-check" name="btnradio" id="btnradio1" autocomplete="off"
+                        value="Reggeli" formControlName="napszak">
+                    <label class="btn-kivalaszt" for="btnradio1">Reggeli</label>
+
+                    <input type="radio" class="btn-check" name="btnradio" id="btnradio2" autocomplete="off"
+                        value="Tízórai" formControlName="napszak">
+                    <label class="btn-kivalaszt ms-1" for="btnradio2">Tízórai</label>
+
+                    <input type="radio" class="btn-check" name="btnradio" id="btnradio3" autocomplete="off" value="Ebéd"
+                        formControlName="napszak">
+                    <label class="btn-kivalaszt ms-1" for="btnradio3">Ebéd</label>
+
+                    <input type="radio" class="btn-check" name="btnradio" id="btnradio4" autocomplete="off"
+                        value="Uzsonna" formControlName="napszak">
+                    <label class="btn-kivalaszt ms-1" for="btnradio4">Uszonna</label>
+
+                    <input type="radio" class="btn-check" name="btnradio" id="btnradio5" autocomplete="off"
+                        value="Vacsora" formControlName="napszak">
+                    <label class="btn-kivalaszt ms-1" for="btnradio5">Vacsora</label>
                 </div>
-                <div class="card-body">
-                    <span class="card-title mb-3">Gluténmentes?</span>
-                    <div class="d-flex flex-row mt-2 ">
-                        <label class="radio mr-1 ">
-                            <input type="radio" name="alma" value="anz">
-                            <span>Igen</span>
-                        </label>
-                        <label class="radio">
-                            <input type="radio" name="add" value="add">
-                             <span>Nem</span>
-                        </label>
-                     
-                    </div>
-                <h6 class="information mt-4">Please provide following information about Anz CMK</h6>
                 <div class="row">
-                    <div class="col-sm-12">
-                        <div class="form-group">
-                            <input class="form-control" type="text" placeholder="Name">
+                    <span class="card-title">Gluténmentes?</span>
+                    <div class="col-md-12">
+                        <div class="btn-group mt-2 mb-3" role="group" aria-label="Basic radio toggle button group">
+                            <input type="radio" class="btn-check" name="glutenmentes" id="glutenmentesIgen" autocomplete="off"
+                                value="true">
+                            <label class="btn-kivalaszt" for="glutenmentesIgen">Igen</label>
+        
+                            <input type="radio" class="btn-check" name="glutenmentes" id="glutenmentesNem" autocomplete="off"
+                                value="false" >
+                            <label class="btn-kivalaszt ms-1" for="glutenmentesNem">Nem</label>
                         </div>
                     </div>
                 </div>
-                <div class="row">
-                    <div class="col-sm-12">
-                        <div class="form-group">
-                            <div class="input-group"> <input class="form-control" type="text" placeholder="Mobile">
-                            </div>
-                        </div>
+                <div class="row mt-5">
+                    <div class="col-md-12">
+                        <button class="confirm-button" (click)="searchRecipes()">Keresés</button>
                     </div>
+                    
                 </div>
-                <div class="row">
-                    <div class="col-sm-12">
-                        <div class="form-group">
-                            <div class="input-group"> <input class="form-control" type="text" placeholder="Email ID">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class=" d-flex flex-column text-center px-5 mt-3 mb-3"> <small class="agree-text">By Booking this
-                        appointment you agree to the</small> <a href="#" class="terms">Terms & Conditions</a> </div>
-                <button class="btn btn-primary btn-block confirm-button">Confirm</button>
             </div>
         </div>
-    </div>
+
+    </form>
 
 
+        <div class="container mt-2" *ngIf="receptek">
+            <form class="row">
+              <div class="col col-lg-3 col-md-12 mb-3" 
+              *ngFor="let recept of receptek; index as i">
+                <section class="mx-auto my-1" style="max-width: 20rem;">
+          
+                  <div class="card">
+          
+                    <div class="bg-image hover-overlay ripple rounded-0" data-mdb-ripple-color="light">
+                      <img class="img-fluid" src="https://mdbootstrap.com/img/Photos/Horizontal/Food/full page/2.jpg"
+                        alt="Card image cap" />
+                      <a href="#!">
+                        <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
+                      </a>
+                    </div>
+                    <div class="card-body">
+                      <h6 class="card-title font-weight-bolder mb-2 text-center"
+                      [routerLink]="['../bekuldottrecept', recept.id]"
+                      >{{recept.receptNev}}</h6>
+            
+                      
+                    </div>
+                  </div>
+          
+                </section>
+          
+              </div>
+            </form>
+          
+          </div>
+    
 </div>

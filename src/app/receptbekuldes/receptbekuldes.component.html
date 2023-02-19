@@ -26,7 +26,7 @@
                 </div>
                 <div class="row">
                     <button type="button" class="uploadButton mx-auto mt-4 mb-5 w-25 text-white" name="uploadbutton"
-                        [disabled]="!selectedFiles" (click)="upload()">Képfeltöltés</button>
+                        [disabled]="!selectedFiles" (click)="upload(id)">Képfeltöltés</button>
                 </div>
             </div>
         </div>
@@ -130,100 +130,174 @@
         <div class="row mt-3 needs-validation">
             <div class="col-lg-4 col-md-12 p-4 card mx-auto bg-white">
                 <h5 class="card-title mb-2">Fontos információk</h5>
-                <select [(ngModel)]="recept.cukrotTartalmaz" class="form-select p-1" aria-label="Default select example"
-                    id="validationCustom01" name="cukrotTartalmaz">
-                    <option selected>Cukormentes</option>
-                    <option value="true">Igen</option>
-                    <option value="false">Nem</option>
-                </select>
+                <div class="row">
+                    <div class="col-md-6">
+                        <span class="me-3 fs-5">Gluténmentes:</span>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
+                            <input type="radio" class="btn-check" name="glutenmentes" id="glutenmentesIgen"
+                                autocomplete="off" value="true" formControlName="glutenmentes" value="true">
+                            <label class="btn-kivalasztSmall" for="glutenmentesIgen">Igen</label>
 
-                <select [(ngModel)]="recept.glutenmentes" class="form-select p-1 mt-2"
-                    aria-label="Default select example" name="glutenmentes">
-                    <option selected>Gluténmentes</option>
-                    <option value="true">Igen</option>
-                    <option value="false">Nem</option>
-                </select>
+                            <input type="radio" class="btn-check" name="glutenmentes" id="glutenmentesNem"
+                                autocomplete="off" value="false" formControlName="glutenmentes">
+                            <label class="btn-kivalasztSmall ms-3" for="glutenmentesNem">Nem</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="row mt-2">
+                    <div class="col-md-6">
+                        <span class="me-3 fs-5">Cukormentes:</span>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
+                            <input type="radio" class="btn-check" name="cukrotTartalmaz" id="cukrotTartalmazIgen"
+                                autocomplete="off" value="true" formControlName="cukrotTartalmaz" value="true">
+                            <label class="btn-kivalasztSmall" for="cukrotTartalmazIgen">Igen</label>
 
-                <select [(ngModel)]="recept.laktozmentes" class="form-select p-1 mt-2"
-                    aria-label="Default select example" name="laktozmentes">
-                    <option selected>Laktózmentes</option>
-                    <option value="true">Igen</option>
-                    <option value="false">Nem</option>
-                </select>
+                            <input type="radio" class="btn-check" name="cukrotTartalmaz" id="cukrotTartalmazNem"
+                                autocomplete="off" value="false" formControlName="cukrotTartalmaz">
+                            <label class="btn-kivalasztSmall ms-3" for="cukrotTartalmazNem">Nem</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="row mt-2">
+                    <div class="col-md-6">
+                        <span class="me-3 fs-5">Tojasmentes:</span>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
+                            <input type="radio" class="btn-check" name="tojasmentes" id="tojasmentesIgen"
+                                autocomplete="off" value="true" formControlName="tojasmentes" value="true">
+                            <label class="btn-kivalasztSmall" for="tojasmentesIgen">Igen</label>
 
-                <select [(ngModel)]="recept.tojasmentes" class="form-select p-1 mt-2"
-                    aria-label="Default select example" name="tojasmentes">
-                    <option selected>Tojásmentes</option>
-                    <option value="true">Igen</option>
-                    <option value="false">Nem</option>
-                </select>
+                            <input type="radio" class="btn-check" name="tojasmentes" id="tojasmentesNem"
+                                autocomplete="off" value="false" formControlName="tojasmentes">
+                            <label class="btn-kivalasztSmall ms-3" for="tojasmentesNem">Nem</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="row mt-2">
+                    <div class="col-md-6">
+                        <span class="me-3 fs-5">Laktozmentes:</span>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
+                            <input type="radio" class="btn-check" name="laktozmentes" id="laktozmentesIgen"
+                                autocomplete="off" value="true" formControlName="laktozmentes" value="true">
+                            <label class="btn-kivalasztSmall" for="laktozmentesIgen">Igen</label>
 
-                <select [(ngModel)]="recept.tejmentes" class="form-select p-1 mt-2" aria-label="Default select example"
-                    name="tejmentes">
-                    <option selected>Tejmentes</option>
-                    <option value="true">Igen</option>
-                    <option value="false">Nem</option>
-                </select>
+                            <input type="radio" class="btn-check" name="laktozmentes" id="laktozmentesNem"
+                                autocomplete="off" value="false" formControlName="laktozmentes">
+                            <label class="btn-kivalasztSmall ms-3" for="laktozmentesNem">Nem</label>
+                            
+                        </div>
+                    </div>
+                </div>
+                <div class="row mt-2">
+                    <div class="col-md-6">
+                        <span class="me-3 fs-5">Tejmentes:</span>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
+                            <input type="radio" class="btn-check" name="tejmentes" id="tejmentesIgen" autocomplete="off"
+                                value="true" formControlName="tejmentes" value="true">
+                            <label class="btn-kivalasztSmall" for="tejmentesIgen">Igen</label>
 
+                            <input type="radio" class="btn-check" name="glutenmentes" id="tejmentesNem"
+                                autocomplete="off" value="false" formControlName="tejmentes">
+                            <label class="btn-kivalasztSmall ms-3" for="tejmentesNem">Nem</label>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
-
-
-
         <div class="row ms-3 me-3">
             <div class="col-lg-12 p-4 card mt-5">
                 <h5 class="card-title text-start mb-2">Mikori étkezés</h5>
-                <input type="checkbox" class="btn-check" id="btn-check-2" checked autocomplete="off">
-                <div class="btn-group w-50" role="group" aria-label="Basic radio toggle button group">
-                    <input type="radio" class="btn-check" name="btnradio" id="btnradio1" autocomplete="off" checked>
-                    <label class="btn btn-outline-primary" for="btnradio1">Reggeli</label>
 
-                    <input type="radio" class="btn-check" name="btnradio" id="btnradio2" autocomplete="off">
-                    <label class="btn btn-outline-primary ms-1" for="btnradio2">Tízórai</label>
+                <div class="btn-group w-75" role="group" aria-label="Basic radio toggle button group">
+                    <input type="radio" class="btn-check" name="btnradio" id="btnradio1" autocomplete="off"
+                        value="Reggeli" formControlName="napszak" checked>
+                    <label class="btn-kivalaszt" for="btnradio1">Reggeli</label>
 
-                    <input type="radio" class="btn-check" name="btnradio" id="btnradio3" autocomplete="off">
-                    <label class="btn btn-outline-primary ms-1" for="btnradio3">Ebéd</label>
+                    <input type="radio" class="btn-check" name="btnradio" id="btnradio2" autocomplete="off"
+                        value="Tízórai" formControlName="napszak">
+                    <label class="btn-kivalaszt ms-1" for="btnradio2">Tízórai</label>
 
-                    <input type="radio" class="btn-check" name="btnradio" id="btnradio4" autocomplete="off">
-                    <label class="btn btn-outline-primary ms-1" for="btnradio4">Uszonna</label>
+                    <input type="radio" class="btn-check" name="btnradio" id="btnradio3" autocomplete="off" value="Ebéd"
+                        formControlName="napszak">
+                    <label class="btn-kivalaszt ms-1" for="btnradio3">Ebéd</label>
 
-                    <input type="radio" class="btn-check" name="btnradio" id="btnradio5" autocomplete="off">
-                    <label class="btn btn-outline-primary ms-1" for="btnradio5">Vacsora</label>
+                    <input type="radio" class="btn-check" name="btnradio" id="btnradio4" autocomplete="off"
+                        value="Uzsonna" formControlName="napszak">
+                    <label class="btn-kivalaszt ms-1" for="btnradio4">Uszonna</label>
+
+                    <input type="radio" class="btn-check" name="btnradio" id="btnradio5" autocomplete="off"
+                        value="Vacsora" formControlName="napszak">
+                    <label class="btn-kivalaszt ms-1" for="btnradio5">Vacsora</label>
 
                 </div>
 
             </div>
         </div>
 
-        <div class="row ms-3 me-3">
-            <div class="col-lg-12 p-4 card mt-5">
-                <h5 class="card-title text-start mb-2">Hozzávalók</h5>
-                <div formArrayName="hozzavalok" class="form-floating mb-3">
-                    <ng-container *ngFor="let hozzavalok of getHozzavalok(); let i = index">
-                        <input type="text" [formControlName]="i" type="text" class="form-control" id="floatingInput"
-                            placeholder="Alapanyag">
-                        <label for="floatingInput">Alapanyag</label>
-                        <button class="btn btn-danger" (click)="deleteHozzavalo(i)">Törlés</button>
-                    </ng-container>
+        <div class="ms-3 me-3">
+            <div class="row">
+                <div class="col-lg-12 p-4 card mt-5">
+                    <h5 class="card-title text-start mb-2">Hozzávalók</h5>
+                    <div formArrayName="hozzavalok" class="form-floating mb-3">
+                        <ng-container *ngFor="let hozzavalok of getHozzavalok(); let i = index">
 
+                            <div class="input-group input-group-lg mb-3 my-auto">
+
+                                <input [formControlName]="i" type="text" class="form-control"
+                                    aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                                <fa-icon (click)="deleteHozzavalo(i)" class="mt-3 ms-1 deleteButton" size="lg"
+                                    [icon]="fatrash"></fa-icon>
+                            </div>
+                        </ng-container>
+                    </div>
+                    <div class="text-end">
+                        <span class="font-weight-bold me-2">Hozzávaló hozzáadása</span>
+                        <fa-icon class="addButton" (click)="addHozzavalo()" size="xl" [icon]="faplus"></fa-icon>
+                    </div>
                 </div>
-                <button type="button" class="btn btn-primary" (click)="addHozzavalo()">Hozzavalo hozzáadása</button>
             </div>
         </div>
 
-        <div formArrayName="lepesek" class="row ms-3 me-3">
-            <div class="col-lg-12 p-4 card mt-5">
-                <h5 class="card-title text-start mb-2">Lépések</h5>
-                <div class="form-floating mb-3">
-                    <input type="email" class="form-control" id="floatingInput" placeholder="Alapanyag" name="lepes">
-                    <label for="floatingInput">Lépés</label>
+        <div class="ms-3 me-3">
+            <div class="row">
+                <div class="col-lg-12 p-4 card mt-5">
+                    <h5 class="card-title text-start mb-2">Lépések</h5>
+                    <div formArrayName="lepesek" class="form-floating mb-3">
+                        <ng-container *ngFor="let lepesek of getLepesek(); let i = index">
+
+                            <div class="input-group input-group-lg mb-3 my-auto">
+
+                                <input [formControlName]="i" type="text" class="form-control"
+                                    aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                                <fa-icon (click)="deleteLepes(i)" class="mt-3 ms-1 deleteButton" size="lg"
+                                    [icon]="fatrash"></fa-icon>
+                            </div>
+                        </ng-container>
+                    </div>
+                    <div class="text-end">
+                        <span class="font-weight-bold me-2">Lépés hozzáadása</span>
+                        <fa-icon class="addButton" (click)="addLepes()" size="xl" [icon]="faplus"></fa-icon>
+                    </div>
                 </div>
-                <button class="btn btn-primary">Lépés hozzáadása</button>
             </div>
         </div>
+
+
         <div class="row">
             <div class="col col-lg-3 md-12 mx-auto mt-4">
-                <button type="submit" class="btn btn-primary btn-block p-2 confirm-button">Recept beküldése</button>
+
+                <button type="submit" class="confirm-button"><fa-icon class="confirm-icon text-white"
+                        [icon]="filearrowup"></fa-icon> Recept beküldése</button>
+
             </div>
         </div>
 

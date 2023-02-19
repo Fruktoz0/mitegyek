@@ -2,11 +2,12 @@ export class Recept {
 
     public id?: string = '';
     public receptNev: string = '';
-    public kategoria: string = 'Kategória';
+    public kategoria: string = '';
     public konyha: string = '';
     public adag: string = '';
-    public nehezseg: string ='';
-    public koltseg: string ='';
+    public nehezseg: string = '';
+    public koltseg: string = '';
+    public napszak: string ='';
 
     public elfogadottRecept: boolean = false;
 
@@ -29,6 +30,8 @@ export class Recept {
     public tojasmentes: boolean = false;
     public laktozmentes: boolean = false;
     public tejmentes: boolean = false;
+    
+    public imgUrl: string = '';
 
 
 

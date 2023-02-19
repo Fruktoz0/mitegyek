@@ -36,6 +36,9 @@ import { SearchComponent } from './search/search.component';
 import { BekuldottfajlokComponent } from './admin/bekuldottfajlok/bekuldottfajlok.component';
 import { UploadDetailsComponent } from './admin/bekuldottfajlok/upload-details/upload-details.component';
 import { UploadListComponent } from './admin/bekuldottfajlok/upload-list/upload-list.component';
+import { FileUploadService } from './service/file-upload.service';
+import { UserComponent } from './user/user.component';
+import { FileUploadModel } from './admin/bekuldottfajlok/file-upload/file-upload.model';
 
 
 
@@ -58,7 +61,9 @@ import { UploadListComponent } from './admin/bekuldottfajlok/upload-list/upload-
     SearchComponent,
     BekuldottfajlokComponent,
     UploadDetailsComponent,
-    UploadListComponent
+    UploadListComponent,
+    UserComponent,
+    FileUploadModel
   ],
   imports: [
     BrowserModule,
@@ -78,7 +83,7 @@ import { UploadListComponent } from './admin/bekuldottfajlok/upload-list/upload-
     provideFirestore(() => getFirestore()),
     NgbModule,
   ],
-  providers: [AuthService, BaseService,],
+  providers: [AuthService, BaseService, FileUploadService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
