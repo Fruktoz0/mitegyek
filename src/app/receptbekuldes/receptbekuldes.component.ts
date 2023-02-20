@@ -5,7 +5,7 @@ import { Router } from '@angular/router';
 import { FormArray, FormBuilder, FormControl, FormGroup, NgForm, Validators } from '@angular/forms';
 import { FileUploadService } from '../service/file-upload.service';
 import { FileUpload } from './file-upload';
-import { faCirclePlus, faCloudArrowUp, faCubesStacked, faFileArrowUp, faFileCirclePlus, faTrash, faTrashCan, faWheatAwn } from '@fortawesome/free-solid-svg-icons';
+import { faCircleExclamation, faCircleInfo, faCirclePlus, faCloudArrowUp, faCubesStacked, faExclamation, faFileArrowUp, faFileCirclePlus, faFireBurner, faTrash, faTrashCan, faWheatAwn } from '@fortawesome/free-solid-svg-icons';
 import { Firestore } from 'firebase/firestore';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 
@@ -28,6 +28,10 @@ export class ReceptbekuldesComponent implements OnInit {
   fatrash = faTrashCan;
   faplus = faCirclePlus;
   filearrowup = faFileArrowUp;
+  facircleinfo = faCircleInfo;
+  faexclamation = faCircleExclamation;
+  fafireburner = faFireBurner;
+
   id: string = '';
 
   recept: Recept = new Recept();
@@ -42,7 +46,7 @@ export class ReceptbekuldesComponent implements OnInit {
 
   ngOnInit(): void {
     this.receptForm.valueChanges.subscribe(val => {
-  
+
     })
   }
 
@@ -56,19 +60,21 @@ export class ReceptbekuldesComponent implements OnInit {
 
   nameValidator = Validators.compose([
     Validators.required,
-    Validators.minLength(2),
-    Validators.maxLength(100),
+    Validators.minLength(3),
+    Validators.maxLength(20),
   ]);
 
 
   receptForm = this.fb.group({
-    receptNev: [""],
+    receptNev: ["", this.nameValidator],
     kategoria: [""],
     konyha: [""],
     adag: [""],
     nehezseg: [""],
     koltseg: [""],
     elokeszulesiIdo: [""],
+    elkeszitesiIdo: [""],
+    sutesiMod: [""],
     imgUrl: [""],
     napszak: [""],
     glutenmentes: [""],
@@ -76,7 +82,7 @@ export class ReceptbekuldesComponent implements OnInit {
     tojasmentes: [""],
     laktozmentes: [""],
     tejmentes: [""],
-    
+
     hozzavalok: this.fb.array([
       [""],
     ]),
@@ -116,10 +122,17 @@ export class ReceptbekuldesComponent implements OnInit {
 
 
   onSubmit(form: FormGroup) {
-    this.receptForm.markAllAsTouched()
-    this.service.createRecept({ ...form.value, elfogadottRecept: false,}).
-      then(() => form.reset());
-    
+    this.receptForm.markAllAsTouched();
+    this.service.createRecept({ ...form.value, elfogadottRecept: false, })
+      .then(() => {
+        form.reset();
+        window.alert('A recept sikeresen beküldve');
+      })
+      .catch((err) => {
+        window.alert('A recept beküldése nem sikerült');
+
+      });
+
   }
 
   //Képfeltöltés
@@ -131,7 +144,7 @@ export class ReceptbekuldesComponent implements OnInit {
     if (this.selectedFiles) {
       const file: File | null = this.selectedFiles.item(0);
       this.selectedFiles = undefined;
-  
+
       if (file) {
         const fileUpload = new FileUpload(file);
         this.uploadService.pushFileToStorage(id, fileUpload).subscribe(
@@ -148,9 +161,9 @@ export class ReceptbekuldesComponent implements OnInit {
       }
     }
   }
-  
-    
-  }
+
+
+}
 
 
 
