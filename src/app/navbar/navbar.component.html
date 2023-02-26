@@ -15,11 +15,12 @@
           <li class="nav-item ">
             <a class="nav-link" routerLink="receptbekuldes">Recept beküldés</a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link disabled" *ngIf="this.authService.isLoggedIn()">Belépve mint, {{this.authService.getEmail()}}</a>
+      
+          <li class="nav-item mx-right">
+            <a class="nav-link" routerLink="login"><fa-icon [icon]="faUser" *ngIf="!this.authService.isLoggedIn()"></fa-icon ></a>
           </li>
           <li class="nav-item">
-            <a class="nav-link icon" routerLink="login"><fa-icon [icon]="faUser" *ngIf="!this.authService.isLoggedIn()"></fa-icon ></a>
+            <a class="nav-link" routerLink="user"><fa-icon [icon]="faUser" *ngIf="this.authService.isLoggedIn()" style="color: #2F6B63"></fa-icon ></a>
           </li>
           <li class="nav-item">
             <a class="nav-link icon" routerLink="login" ><fa-icon [icon]="farRightfrombacket" *ngIf="this.authService.isLoggedIn()" (click)="this.authService.logout()"></fa-icon></a>
@@ -27,6 +28,7 @@
           <li class="nav-item">
             <a class="nav-link " routerLink="admin" *ngIf="this.authService.isLoggedIn()">Admin</a>
           </li>
+      
         </ul>
       </div>
     </div>
