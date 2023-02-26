@@ -1,1 +1,1 @@
-{"version":3,"sources":[],"names":[],"mappings":"","file":"editrecept.component.css"}
+{"version":3,"sources":["editrecept.component.scss","editrecept.component.css"],"names":[],"mappings":"AAAA;EACI,WAAA;EACA,YAAA;ACCJ;;ADEA;EACI,yBAAA;ACCJ;;ADEA;EACI,yBAAA;ACCJ;;ADEA;EACQ,yBAAA;EACA,YAAA;EACA,YAAA;EACA,YAAA;EACA,YAAA;EACA,eAAA;ACCR","file":"editrecept.component.css"}

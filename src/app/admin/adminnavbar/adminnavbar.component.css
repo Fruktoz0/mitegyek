@@ -1,5 +1,10 @@
 .adminNav {
-  border-radius: 15px;
+  border-radius: 5px;
+  color: black !important;
+}
+
+.navlink {
+  color: black;
 }
 
 .adminMenu {
@@ -9,4 +14,19 @@
 
 span {
   color: black;
+}
+
+fa-icon {
+  color: black;
+}
+
+li:hover {
+  background-color: #e6f4f2;
+  border-right: 3px solid #2F6B63;
+}
+li:hover span {
+  color: #2F6B63;
+}
+li:hover fa-icon {
+  color: #2F6B63;
 }/*# sourceMappingURL=adminnavbar.component.css.map */

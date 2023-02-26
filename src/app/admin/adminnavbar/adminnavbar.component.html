@@ -1,48 +1,28 @@
 <div class="container-fluid pt-2">
     <div class="row flex-nowrap">
-        <div class="col-auto col-md-2 col-lg-2 px-sm-2 px-0 bg-white adminNav ">
-            <div class="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 min-vh-100">
+        <div class="col-auto col-md-2 col-lg-2 px-sm-0 bg-white adminNav">
+            <div class="align-items-sm-center min-vh-100">
                 <a href="/" class="d-flex align-items-center pb-3 mb-md-0 me-md-auto adminMenu text-decoration-none">
-                    <span class="fs-5 d-none d-sm-inline">Admin Panel</span>
+                    <span class="fs-5 d-none d-sm-inline ms-3">Admin Panel</span>
                 </a>
-                <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start" id="menu">
-                    <li class="nav-item navbar-light">
-                        <a routerLink="bekuldottfajlok" class="nav-link align-middle px-0">
-                            <i class="fs-4 bi-house"></i> <span class="ms-1 d-none d-sm-inline">Beküldött fájlok</span>
+                <ul class="nav flex-column mb-sm-auto" id="menu">
+                    <li>
+                        <a routerLink="bekuldottfajlok" class="nav-link align-middle">
+                            <fa-icon [icon]="fafile" ></fa-icon> <span class="ms-2 d-none d-sm-inline">Beküldött fájlok</span>
                         </a>
                     </li>
                     <li>
-                        <a href="#submenu1" data-bs-toggle="collapse" class="nav-link px-0 align-middle">
-                            <span class="ms-1 d-none d-sm-inline"> üres fül</span> </a>
-                        <ul class="collapse show nav flex-column ms-1" id="submenu1" data-bs-parent="#menu">
-                            <li class="w-100">
-                                <a href="#" class="nav-link px-0"> <span class="d-none d-sm-inline">Item</span> 1 </a>
-                            </li>
-                            <li>
-                                <a href="#" class="nav-link px-0"> <span class="d-none d-sm-inline">Item</span> 2 </a>
-                            </li>
-                        </ul>
+                        <a routerLink="bekuldottreceptek" class="nav-link align-middle">
+                            <fa-icon [icon]="facheck" ></fa-icon> <span class="ms-2 d-none d-sm-inline">Receptek</span></a>
                     </li>
                     <li>
-                        <a routerLink="bekuldottreceptek" class="nav-link px-0 align-middle">
-                            <i class="fs-4 bi-table"></i> <span class="ms-1 d-none d-sm-inline">Elfogadásra váró
-                                receptek</span></a>
-                    </li>
-                    <li>
-                        <a href="#submenu2" data-bs-toggle="collapse" class="nav-link px-0 align-middle ">
-                            <i class="fs-4 bi-bootstrap"></i> <span class="ms-1 d-none d-sm-inline">Bootstrap</span></a>
-                        <ul class="collapse nav flex-column ms-1" id="submenu2" data-bs-parent="#menu">
-                            <li class="w-100">
-                                <a href="#" class="nav-link px-0"> <span class="d-none d-sm-inline">Item</span> 1</a>
-                            </li>
-                            <li>
-                                <a href="#" class="nav-link px-0"> <span class="d-none d-sm-inline">Item</span> 2</a>
-                            </li>
-                        </ul>
+                        <a routerLink="users" href="#" class="nav-link align-middle">
+                            <fa-icon [icon]="fauser"></fa-icon> <span class="ms-2 d-none d-sm-inline">Felhasználók</span>
+                        </a>
                     </li>
                     <li>
                         <a href="#submenu3" data-bs-toggle="collapse" class="nav-link px-0 align-middle">
-                            <i class="fs-4 bi-grid"></i> <span class="ms-1 d-none d-sm-inline">Products</span> </a>
+                            <i class="fs-4 bi-grid"></i> <span class="ms-1 d-none d-sm-inline">Üres fül</span> </a>
                         <ul class="collapse nav flex-column ms-1" id="submenu3" data-bs-parent="#menu">
                             <li class="w-100">
                                 <a href="#" class="nav-link px-0"> <span class="d-none d-sm-inline">Product</span> 1</a>
@@ -57,11 +37,6 @@
                                 <a href="#" class="nav-link px-0"> <span class="d-none d-sm-inline">Product</span> 4</a>
                             </li>
                         </ul>
-                    </li>
-                    <li>
-                        <a routerLink="users" href="#" class="nav-link px-0 align-middle">
-                            <span class="ms-1 d-none d-sm-inline">Regisztrál felhasználók</span>
-                        </a>
                     </li>
                 </ul>
                 <hr>

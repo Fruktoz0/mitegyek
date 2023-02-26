@@ -123,6 +123,10 @@ export class ReceptbekuldesComponent implements OnInit {
 
   onSubmit(form: FormGroup) {
     this.receptForm.markAllAsTouched();
+    if(form.invalid){
+      window.alert('Kérjük, töltse ki az összes mezőt!');
+      return;
+    }
     this.service.createRecept({ ...form.value, elfogadottRecept: false, })
       .then(() => {
         form.reset();

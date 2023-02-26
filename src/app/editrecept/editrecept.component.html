@@ -1,31 +1,19 @@
-<div *ngIf="recept" class="container">
-    <h4>Recept szerkesztése</h4>
-    <form #receptForm="ngForm" (ngSubmit)="onUpdate()">
-      <div class="form-group">
-        <label>Book Name</label>
-        <input class="form-control" name="name" #nameCtrl="ngModel" 
-          [(ngModel)]="recept.receptNev" placeholder="Recept neve" required>
+<div *ngIf="recept" class="container-fluid">
+  <div class=" boxTitle d-flex mb-1 text-white">
+    <span class="p-2"><fa-icon class="pt-2" size="xl" [icon]="pentosquare"></fa-icon></span>
+    <h5 class="card-title ps-4 pt-2 text-start">Recept szerkesztése</h5>
+</div>
+    <form #receptForm="ngForm" class="w-75 mx-auto" (ngSubmit)="onUpdate()">
+      <div class="form-group mt-2">
+        <label>Recept neve:</label>
+        <input class="form-control mt-1" name="name" 
+          [(ngModel)]="recept.receptNev" required>
       </div>
   
-      <div class="form-group">
-        <label>Author</label>
-        <input class="form-control" name="author" #authorCtrl="ngModel" 
-          [(ngModel)]="recept.sutesiHofok" placeholder="sutesiHofok" required>
-      </div>
-  
-      <div class="form-group">
-        <label>Price</label>
-        <div class="input-group">
-          <div class="input-group-addon">
-             <i class="bi bi-currency-dollar"></i>
-          </div>
-          <input class="form-control" name="price" #priceCtrl="ngModel" 
-             [(ngModel)]="recept.nehezseg" placeholder="Price" required>
-         </div>
-      </div>
+     
   
       <div class="form-group float-right">
-       <button type="submit" class="btn btn-success" [disabled]="!receptForm.valid">
+       <button type="submit" class="sendButton mt-4 mb-2" [disabled]="!receptForm.valid">
           <i class="bi bi-plus"></i>Recept módosítása</button>
        </div>
     </form>

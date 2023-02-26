@@ -14,7 +14,7 @@ export class MitegyekmaComponent {
   isSearchEmpty: boolean | undefined;
 
   searchParams = {
-    receptNev: null,
+    napszak: null,
     glutenmentes: null,
     kategoria: null,
   };
@@ -27,12 +27,13 @@ export class MitegyekmaComponent {
     this.receptek = [];
     const $glutenmentes = this.firestore
       .collection('receptek', (ref) =>
-        ref.where('glutenmentes', '==', this.searchParams.glutenmentes)
+        ref
+        .where('glutenmentes', '==', this.searchParams.glutenmentes)
       )
       .valueChanges({ idField: 'id' });
       
       combineLatest([$glutenmentes])
-      .pipe(map(([one]) => [...one]))
+      .pipe(map(([one,]) => [...one]))
       .subscribe((response: any) => {
         this.receptek = response;
        

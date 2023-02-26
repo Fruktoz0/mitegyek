@@ -5,8 +5,8 @@
                 <input formControlName="receptNev" type="text" class="form-control text-center receptNev shadow-none"
                     aria-label="Large" aria-describedby="inputGroup-sizing-sm" name="receptNev"
                     placeholder="Recept neve">
-                <ng-container class="color-danger" *ngIf="getError('receptNev', 'required') as err" class="text-danger">
-                    Recept Név megadása kötelező
+                <ng-container *ngIf="getError('receptNev', 'required') as err" >
+                    <span class="text-danger">Recept Név megadása kötelező</span>
                 </ng-container>
 
             </div>

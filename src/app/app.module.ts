@@ -39,6 +39,7 @@ import { UploadListComponent } from './admin/bekuldottfajlok/upload-list/upload-
 import { FileUploadService } from './service/file-upload.service';
 import { UserComponent } from './user/user.component';
 import { FileUploadModel } from './admin/bekuldottfajlok/file-upload/file-upload.model';
+import { AuthGuard } from './guard/auth.guard';
 
 
 
@@ -83,7 +84,7 @@ import { FileUploadModel } from './admin/bekuldottfajlok/file-upload/file-upload
     provideFirestore(() => getFirestore()),
     NgbModule,
   ],
-  providers: [AuthService, BaseService, FileUploadService],
+  providers: [AuthService, BaseService, FileUploadService, AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

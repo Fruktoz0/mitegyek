@@ -15,6 +15,7 @@ import { BekuldottfajlokComponent } from './admin/bekuldottfajlok/bekuldottfajlo
 import { UploadDetailsComponent } from './admin/bekuldottfajlok/upload-details/upload-details.component';
 import { UploadListComponent } from './admin/bekuldottfajlok/upload-list/upload-list.component';
 import { UserComponent } from './user/user.component';
+import { AuthGuard } from './guard/auth.guard';
 
 const routes: Routes = [
   {path: '', redirectTo: 'mitegyekma', pathMatch: 'full'},
@@ -22,15 +23,15 @@ const routes: Routes = [
     {path: 'bekuldottreceptek', component: BekuldottreceptekComponent},
   ]
 },
-{path: 'admin', component: AdminComponent, children: [
+{path: 'admin', component: AdminComponent, canActivate: [AuthGuard], children: [
   {path: 'bekuldottfajlok', component: BekuldottfajlokComponent},
 ]
 },
-  {path: 'admin', component: AdminComponent, children: [
+  {path: 'admin', component: AdminComponent, canActivate: [AuthGuard], children: [
     {path: 'users', component: UsersComponent},
   ]
 },
-{path: 'admin', component: AdminComponent, children: [
+{path: 'admin', component: AdminComponent, canActivate: [AuthGuard], children: [
   {path: 'bekuldottrecept/:id', component: BekuldottreceptComponent},
 ]
 },
@@ -38,7 +39,8 @@ const routes: Routes = [
   {path: 'registration', component: RegistrationComponent},
   {path: 'mitegyekma', component: MitegyekmaComponent},
   {path: 'bekuldottrecept/:id', component: BekuldottreceptComponent},
-  {path: 'receptbekuldes', component: ReceptbekuldesComponent},
+  {path: 'receptbekuldes', component: ReceptbekuldesComponent, canActivate: [AuthGuard]},
+  {path: 'admin', component: AdminComponent, canActivate: [AuthGuard]},
   {path: 'search', component: SearchComponent},
   {path: 'editrecept', component: EditreceptComponent},
   {path: 'login', component: LoginComponent},
@@ -47,13 +49,11 @@ const routes: Routes = [
 
 
 
-  {path: 'admin', component: AdminComponent, children: [
+  {path: 'admin', component: AdminComponent, canActivate: [AuthGuard], children: [
     {path: 'uploaddetails', component: UploadDetailsComponent},
   ]
   },
-
   {path: 'uploadlist', component: UploadListComponent},
-
 ];
 
 @NgModule({

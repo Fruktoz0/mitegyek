@@ -3,6 +3,7 @@ import { BaseService } from '../service/base.service';
 import { NgForm } from '@angular/forms';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { Recept } from 'src/app/receptbekuldes/recept';
+import { faPenToSquare } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-editrecept',
@@ -12,6 +13,7 @@ import { Recept } from 'src/app/receptbekuldes/recept';
 export class EditreceptComponent implements OnInit {
   @Input() id!: string;
   recept!: Recept ;
+  pentosquare = faPenToSquare
 
   constructor(public service: BaseService, public activeModal: NgbActiveModal){}
 

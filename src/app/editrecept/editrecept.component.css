@@ -1,1 +1,21 @@
-/*# sourceMappingURL=editrecept.component.css.map */
+* {
+  margin: 0px;
+  padding: 0px;
+}
+
+.boxTitle span {
+  background-color: #2F6B63;
+}
+
+.boxTitle {
+  background-color: #377d73;
+}
+
+.sendButton {
+  background-color: #2F6B63;
+  color: white;
+  width: 150px;
+  height: 40px;
+  border: none;
+  cursor: pointer;
+}/*# sourceMappingURL=editrecept.component.css.map */

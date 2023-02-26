@@ -1,4 +1,4 @@
-<div class="text-center pt-5 pb-3 bg-light">
+<div class="vh-100 text-center pt-5 pb-3 bg-light">
     <form class="mb-5 d-flex justify-content-center ">
         <div class="card px-1 py-4">
             <div class="card-body">
@@ -48,42 +48,39 @@
                 </div>
             </div>
         </div>
-
     </form>
-
-
-
-
-
-        <div class="container mt-2" *ngIf="receptek">
-            <form class="row">
-              <div class="col col-lg-3 col-md-12 mb-3" 
-              *ngFor="let recept of receptek; index as i">
-                <section class="mx-auto my-1" style="max-width: 20rem;">
-          
-                  <div class="card">
-          
-                    <div class="bg-image hover-overlay ripple rounded-0" data-mdb-ripple-color="light">
-                      <img class="img-fluid" src="https://mdbootstrap.com/img/Photos/Horizontal/Food/full page/2.jpg"
-                        alt="Card image cap" />
-                      <a href="#!">
-                        <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
-                      </a>
-                    </div>
-                    <div class="card-body">
-                      <h6 class="card-title font-weight-bolder mb-2 text-center"
-                      [routerLink]="['../bekuldottrecept', recept.id]"
-                      >{{recept.receptNev}}</h6>
-            
-                      
-                    </div>
-                  </div>
-          
-                </section>
-          
+    <div class="container mt-2" *ngIf="receptek">
+      <form class="row">
+        <div class="col col-lg-3 col-md-12 mb-3" 
+        *ngFor="let recept of receptek; index as i">
+          <section class="mx-auto my-1" style="max-width: 20rem;">
+    
+            <div class="card">
+    
+              <div class="bg-image hover-overlay ripple rounded-0" data-mdb-ripple-color="light">
+                <img class="img-fluid" src="https://mdbootstrap.com/img/Photos/Horizontal/Food/full page/2.jpg"
+                  alt="Card image cap" />
+                <a href="#!">
+                  <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
+                </a>
               </div>
-            </form>
-          
-          </div>
+              <div class="card-body">
+                <h6 class="card-title font-weight-bolder mb-2 text-center"
+                [routerLink]="['../bekuldottrecept', recept.id]"
+                >{{recept.receptNev}}</h6>
+      
+                
+              </div>
+            </div>
+    
+          </section>
+    
+        </div>
+      </form>
+    
+    </div>
     
 </div>
+
+
+   

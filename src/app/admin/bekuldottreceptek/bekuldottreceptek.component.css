@@ -1,1 +1,13 @@
-/*# sourceMappingURL=bekuldottreceptek.component.css.map */
+.delete {
+  color: red;
+}
+
+.buttons span:hover {
+  cursor: pointer;
+  color: #2F6B63;
+  font-weight: bold;
+}
+
+fa-icon:hover {
+  cursor: pointer;
+}/*# sourceMappingURL=bekuldottreceptek.component.css.map */
